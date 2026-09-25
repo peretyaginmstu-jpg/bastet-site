@@ -1,0 +1,591 @@
+<!doctype html>
+<html lang="ru" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>document.documentElement.className = 'js' + (location.search.indexOf('qa=1') !== -1 ? ' qa-mode' : '');</script>
+  <title>Бастет — дезинсекция, дератизация и дезинфекция объектов в Москве</title>
+  <meta name="description" content="«Бастет» — лицензированная дезинсекция, дератизация и пест-контроль, акарицидная обработка и дезинфекция объектов в Москве. Подбор решения и отчётные документы.">
+  <meta name="theme-color" content="#F7F2E8">
+  <!-- Рабочий домен по пожеланию заказчика; проверить регистрацию bastet-dez.ru перед публикацией. -->
+  <link rel="canonical" href="https://bastet-dez.ru/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:site_name" content="Бастет">
+  <meta property="og:title" content="Бастет — санитарная безопасность объекта">
+  <meta property="og:description" content="От обследования и подбора метода до обработки и отчётных документов.">
+  <meta property="og:url" content="https://bastet-dez.ru/">
+  <meta property="og:image" content="https://bastet-dez.ru/assets/og-cover.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Бастет — дезинсекция, дератизация и дезинфекция объектов">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <!-- Шрифты первого экрана подгружаем сразу: иначе они обнаруживаются только на этапе раскладки.
+       Латинский сабсет Inter нужен в каждой строке: в нём пробел, запятая, точка и цифры. -->
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="assets/fonts/inter-cyrillic.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="assets/fonts/inter-latin.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="assets/fonts/prata-regular-cyrillic.woff2">
+  <!-- Арка hero на первом экране только с 1024 px; на телефоне она ниже сгиба и не должна
+       конкурировать со шрифтами. Srcset и sizes — те же, что у <picture> ниже. -->
+  <link rel="preload" as="image" type="image/avif" media="(min-width: 1024px)" fetchpriority="high" imagesrcset="assets/images/hero-960.avif 960w, assets/images/hero.avif 1920w" imagesizes="(max-width: 767px) calc((100vw - 68px) * 1.875), (max-width: 1023px) 672px, (max-width: 1180px) 1040px, 1160px">
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<svg class="icon-sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+  <!-- Знак «Бастет» — финальный, из brand/sprite-symbols.txt (генератор brand/build-marks.py). Силуэт = currentColor, глаз = CSS-переменная logo-eye. -->
+  <symbol id="logo-bastet" viewBox="0 0 64 64"><path fill="currentColor" d="M29.4 3.2 L33.4 9.5 L35.5 7.1 C36.1 8 36.6 9.1 36.9 10.25 C39.4 10.3 41.1 11.5 42.2 12.9 L45.5 17.1 Q46.05 17.95 45.45 18.6 L44.25 19.8 C43.45 20.6 42.55 21.25 41.35 21.6 C39.85 22.05 38.95 23.35 38.95 25.25 C38.95 28.9 41.55 30.7 41.35 35.3 L40.5 53 A2 2 0 0 0 44.5 53 L44.5 49.1 A2.5 2.5 0 0 1 49.5 49.1 L49.5 53 A7 7 0 0 1 42.5 60 L26.5 60 A11 11 0 0 1 16.7 43.99 L25.9 26 C26.9 24 28.75 22 28.75 19.6 C28.75 17.4 26.5 16 26.5 13.2 C26.6 10.4 28.2 6.4 29.4 3.2 Z"/><path fill="var(--logo-eye, #E8D7BF)" style="fill:var(--logo-eye, #E8D7BF)" d="M35.1 14.6 Q38.35 13.35 40.8 16 Q37.6 17.5 35.1 14.6 Z"/></symbol>
+  <symbol id="i-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h14.5"/><path d="M12.8 6.2 18.6 12l-5.8 5.8"/></symbol>
+  <symbol id="i-caret-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m6.2 9.6 5.8 5.6 5.8-5.6"/></symbol>
+  <symbol id="i-check-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.6"/><path d="m8.4 12.2 2.5 2.5 4.7-5.3"/></symbol>
+  <symbol id="i-clipboard-text" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4.6" y="4.6" width="14.8" height="16.4" rx="2"/><path d="M9 4.6V3.8a1.4 1.4 0 0 1 1.4-1.4h3.2A1.4 1.4 0 0 1 15 3.8v.8Z"/><path d="M8.6 11.4h6.8M8.6 15.4h4.6"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="8.6" y="8.6" width="11.4" height="11.4" rx="2.2"/><path d="M15.4 5.4H6.2a2.2 2.2 0 0 0-2.2 2.2v9.2"/></symbol>
+  <symbol id="i-envelope-simple" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5.4" width="18" height="13.2" rx="2.4"/><path d="m3.6 6.8 8.4 6 8.4-6"/></symbol>
+  <symbol id="i-file-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2.8H7.2a2 2 0 0 0-2 2v14.4a2 2 0 0 0 2 2h9.6a2 2 0 0 0 2-2V7.6L14 2.8Z"/><path d="M13.8 3v4.4h4.6"/><path d="m9 14.4 1.9 1.9 3.6-4"/></symbol>
+  <symbol id="i-file-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2.8H7.2a2 2 0 0 0-2 2v14.4a2 2 0 0 0 2 2h4"/><path d="M13.8 3v4.4h4.6V10"/><circle cx="16.3" cy="16.3" r="3.3"/><path d="m18.7 18.7 2.3 2.3"/></symbol>
+  <symbol id="i-file-text" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2.8H7.2a2 2 0 0 0-2 2v14.4a2 2 0 0 0 2 2h9.6a2 2 0 0 0 2-2V7.6L14 2.8Z"/><path d="M13.8 3v4.4h4.6"/><path d="M8.6 12.6h6.8M8.6 16.2h5"/></symbol>
+  <symbol id="i-files" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8.6 7.4h6.2l3.6 3.6v8.8a1.8 1.8 0 0 1-1.8 1.8H8.6a1.8 1.8 0 0 1-1.8-1.8V9.2a1.8 1.8 0 0 1 1.8-1.8Z"/><path d="M14.6 7.6v3.6h3.6"/><path d="M15.4 4.6a1.8 1.8 0 0 0-1.7-1.2H5.9a1.8 1.8 0 0 0-1.8 1.8v11.2"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-magnifying-glass" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.9" cy="10.9" r="6.6"/><path d="m15.8 15.8 4.4 4.4"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6.4 3.4h3l1.5 3.8-1.9 1.4a11.4 11.4 0 0 0 5.4 5.4l1.4-1.9 3.8 1.5v3a1.8 1.8 0 0 1-2 1.8C10.9 17.8 6.2 13.1 4.6 5.4a1.8 1.8 0 0 1 1.8-2Z"/></symbol>
+  <symbol id="i-seal-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2.6 2.3 2.1 3.1-.3.6 3 2.7 1.6-1.3 2.8 1.3 2.8-2.7 1.6-.6 3-3.1-.3L12 21l-2.3-2.1-3.1.3-.6-3-2.7-1.6L4.6 12 3.3 9.2 6 7.6l.6-3 3.1.3L12 2.6Z"/><path d="m9 12.1 2.2 2.2 4-4.4"/></symbol>
+  <symbol id="i-shield-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.9 4.7 6v5.3c0 4.4 3 8.3 7.3 9.8 4.3-1.5 7.3-5.4 7.3-9.8V6L12 2.9Z"/><path d="m8.7 11.9 2.4 2.4 4.3-4.7"/></symbol>
+  <symbol id="i-spray-bottle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9.2 8.6h5a2.2 2.2 0 0 1 2.2 2.2v8.4a2.2 2.2 0 0 1-2.2 2.2h-5A2.2 2.2 0 0 1 7 19.2v-8.4a2.2 2.2 0 0 1 2.2-2.2Z"/><path d="M10.4 8.6V6.2h3.4v2.4"/><path d="M13.8 4.2h-4"/><path d="M7 12.6h9.4"/><path d="M16.6 5.4h3.2M18.4 3.2v4.4M20.6 8.4h-1.6"/></symbol>
+  <symbol id="i-strategy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><circle cx="12" cy="12" r="8.4"/><path d="M12 .9v3M12 21.1v3M.9 12h3M20.1 12h3"/></symbol>
+  <symbol id="i-tag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 12.6V4.8a1.4 1.4 0 0 1 1.4-1.4h7.8l8 8a1.6 1.6 0 0 1 0 2.3l-7.5 7.5a1.6 1.6 0 0 1-2.3 0l-7.4-7.4Z"/><circle cx="8.3" cy="8.3" r="1.6"/></symbol>
+  <symbol id="i-toolbox" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.8" y="7.6" width="18.4" height="12.4" rx="2"/><path d="M8.6 7.6V5.8a1.8 1.8 0 0 1 1.8-1.8h3.2a1.8 1.8 0 0 1 1.8 1.8v1.8"/><path d="M2.8 12.6h18.4"/><path d="M9.4 12.6v2.2h5.2v-2.2"/></symbol>
+  <symbol id="i-user-focus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.2V5.6a2.2 2.2 0 0 1 2.2-2.2h2.6M20.6 8.2V5.6a2.2 2.2 0 0 0-2.2-2.2h-2.6M3.4 15.8v2.6a2.2 2.2 0 0 0 2.2 2.2h2.6M20.6 15.8v2.6a2.2 2.2 0 0 1-2.2 2.2h-2.6"/><circle cx="12" cy="10.6" r="2.6"/><path d="M7.9 17.2a4.6 4.6 0 0 1 8.2 0"/></symbol>
+
+  <!-- Иллюстрации оборудования: блок 2 ТЗ требует картинку напротив каждой позиции. -->
+  <symbol id="ill-backpack-battery" viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="24" y="24" width="30" height="46" rx="9" fill="var(--ill-fill, currentColor)" fill-opacity=".16"/>
+    <path d="M34 24v-6a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v6"/>
+    <path d="M28 30c-8 4-11 12-9 21 1 6 4 10 8 13"/>
+    <rect x="31" y="40" width="16" height="11" rx="3"/><path d="M35 45.5h8"/>
+    <path d="M54 36c9 0 13 4 13 10 0 4-2 6-2 9"/>
+    <path d="m62 60 20-14"/><circle cx="84" cy="44.5" r="3.5" fill="var(--ill-fill, currentColor)" fill-opacity=".26"/>
+    <path d="M30 76h20"/>
+  </symbol>
+  <symbol id="ill-hot-fog" viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="14" y="38" width="38" height="24" rx="8" fill="var(--ill-fill, currentColor)" fill-opacity=".16"/>
+    <path d="M20 38V30a6 6 0 0 1 6-6h10a6 6 0 0 1 6 6v8"/>
+    <path d="M52 44h10l10-8v28l-10-8H52"/>
+    <path d="M26 62v8M42 62v8"/>
+    <path d="M78 34c4 1 5 4 3 6M80 48c6 0 7 3 4 5M78 60c4 2 4 5 1 6"/>
+  </symbol>
+  <symbol id="ill-cold-fog" viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="14" y="34" width="40" height="32" rx="7" fill="var(--ill-fill, currentColor)" fill-opacity=".16"/>
+    <path d="M24 34v-6a5 5 0 0 1 5-5h9a5 5 0 0 1 5 5v6"/>
+    <circle cx="34" cy="50" r="9"/><circle cx="34" cy="50" r="3"/>
+    <path d="M54 44h8v12h-8"/>
+    <circle cx="72" cy="38" r="3"/><circle cx="82" cy="50" r="3.5"/><circle cx="70" cy="60" r="2.5"/><circle cx="82" cy="30" r="2"/>
+    <path d="M22 66v6M46 66v6"/>
+  </symbol>
+  <symbol id="ill-gel-gun" viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="22" y="30" width="42" height="16" rx="6" fill="var(--ill-fill, currentColor)" fill-opacity=".16"/>
+    <path d="M64 34h8l8 4-8 4h-8"/>
+    <path d="M14 34h8v8h-8M14 38h8"/>
+    <path d="M34 46v10a6 6 0 0 1-6 6h-2"/><path d="M40 46v6"/>
+    <path d="M28 62c-4 3-4 8 0 11"/>
+    <circle cx="84" cy="38" r="3" fill="var(--ill-fill, currentColor)" fill-opacity=".3"/>
+  </symbol>
+  <symbol id="ill-uv-lamp" viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="16" y="40" width="64" height="16" rx="8" fill="var(--ill-fill, currentColor)" fill-opacity=".16"/>
+    <path d="M10 43h6v10h-6zM80 43h6v10h-6z"/>
+    <path d="M28 40v16M40 40v16M52 40v16M64 40v16"/>
+    <path d="M26 32l-4-8M48 30v-9M70 32l4-8M26 64l-4 8M48 66v9M70 64l4 8"/>
+  </symbol>
+  <symbol id="ill-kik" viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M18 48c0-7 6-12 14-14l30-6c9-2 16 4 16 12v22a4 4 0 0 1-4 4H22a4 4 0 0 1-4-4V48Z" fill="var(--ill-fill, currentColor)" fill-opacity=".16"/>
+    <circle cx="32" cy="56" r="7"/>
+    <rect x="52" y="46" width="18" height="8" rx="4"/><path d="M61 46v-5"/>
+    <path d="M44 66h26" stroke-dasharray="4 5"/>
+    <path d="M18 66h60"/>
+  </symbol>
+  <symbol id="ill-livetrap" viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="14" y="30" width="60" height="36" rx="5" fill="var(--ill-fill, currentColor)" fill-opacity=".16"/>
+    <path d="M26 30v36M38 30v36M50 30v36M62 30v36"/>
+    <path d="M14 42h60M14 54h60"/>
+    <path d="M74 30v36l10-6V36l-10-6Z"/>
+    <path d="M44 24v6M40 20a4 4 0 0 1 8 0"/>
+    <path d="M20 66v6M68 66v6"/>
+  </symbol>
+  <symbol id="ill-ultrasonic" viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="20" y="26" width="34" height="44" rx="8" fill="var(--ill-fill, currentColor)" fill-opacity=".16"/>
+    <circle cx="37" cy="42" r="7"/><path d="M30 58h14"/>
+    <path d="M20 62h-6M20 34h-6"/>
+    <path d="M62 36c5 4 5 20 0 24M72 28c9 8 9 32 0 40M82 22c12 11 12 41 0 52"/>
+  </symbol>
+  <symbol id="ill-backpack-petrol" viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="12" y="16" width="26" height="30" rx="7" fill="var(--ill-fill, currentColor)" fill-opacity=".16"/>
+    <path d="M20 16v-4a3 3 0 0 1 3-3h5a3 3 0 0 1 3 3v4"/>
+    <rect x="14" y="48" width="26" height="22" rx="5"/>
+    <path d="M20 56h8"/><circle cx="34" cy="53" r="2.4"/>
+    <path d="M40 54h6l6-8h18a14 14 0 0 1 0 28H52l-6-8h-6Z" fill="var(--ill-fill, currentColor)" fill-opacity=".16"/>
+    <path d="M64 46v28M74 47v26"/>
+    <path d="M10 24c-6 5-7 12-4 19"/>
+  </symbol>
+  <symbol id="ill-entomo-kit" viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="14" y="34" width="52" height="38" rx="6" fill="var(--ill-fill, currentColor)" fill-opacity=".16"/>
+    <path d="M14 46h52"/><path d="M32 34v-5a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v5"/>
+    <rect x="22" y="54" width="10" height="12" rx="3"/>
+    <rect x="38" y="54" width="10" height="12" rx="3"/>
+    <path d="M22 54v-3M38 54v-3"/>
+    <circle cx="74" cy="38" r="11"/><path d="m66 46-8 8"/>
+  </symbol>
+  <symbol id="ill-flag" viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M30 16v62"/>
+    <path d="M30 20h42v24c-8 5-18-3-26 1s-12 2-16-1V20Z" fill="var(--ill-fill, currentColor)" fill-opacity=".16"/>
+    <path d="M42 20v25M54 20v24M64 20v25"/>
+    <path d="M18 78c3-6 5-12 5-18M30 78v-8M42 78c-3-5-4-10-4-15M56 78c2-4 3-9 3-13M68 78c2-5 3-9 3-12"/>
+    <path d="M10 84h76"/>
+  </symbol>
+</svg>
+  <a class="skip-link" href="#main">Перейти к содержанию</a>
+
+  <header class="site-header" id="header">
+    <div class="container nav-shell">
+      <a class="brand" href="#top" aria-label="Бастет — на главную">
+        <svg class="brand-mark" aria-hidden="true" focusable="false"><use href="#logo-bastet"/></svg>
+        <span><b>Бастет</b><small>дезинсекция · дератизация</small></span>
+      </a>
+      <nav class="desktop-nav" aria-label="Основное меню">
+        <a href="#services">Услуги</a>
+        <a href="#equipment">Оборудование</a>
+        <a href="#process">Как работаем</a>
+        <a href="#documents">Документы</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+      <a class="header-phone" href="tel:+79188266617">
+        <b>8 (918) 826-66-17</b>
+        <small>Звонок</small>
+      </a>
+      <a class="btn btn-primary header-cta" href="#request">Подобрать решение</a>
+      <button class="menu-button" id="burger" type="button" aria-controls="mobileMenu" aria-expanded="false" aria-label="Открыть меню">
+        <i class="ic ic-open" aria-hidden="true"><svg aria-hidden="true" focusable="false"><use href="#i-list"/></svg></i>
+        <i class="ic ic-close" aria-hidden="true"><svg aria-hidden="true" focusable="false"><use href="#i-x"/></svg></i>
+      </button>
+    </div>
+    <nav class="mobile-menu" id="mobileMenu" aria-label="Мобильное меню">
+      <a href="#services">Услуги</a>
+      <a href="#equipment">Оборудование и препараты</a>
+      <a href="#process">Как работаем</a>
+      <a href="#documents">Документы</a>
+      <a href="#contacts">Контакты</a>
+      <a href="tel:+79188266617">8 (918) 826-66-17</a>
+    </nav>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+
+      <div class="container hero-inner">
+        <div class="hero-card reveal">
+          <div class="hero-copy">
+            <p class="eyebrow">Лицензированная санитарная обработка объектов</p>
+            <h1 id="hero-title">Санитарная безопасность объекта&nbsp;— <span>от&nbsp;обследования до&nbsp;отчётных документов</span></h1>
+            <p class="hero-lead">Оказание услуг по дезинсекции, дератизации, дезинфекции, <span class="nowrap">пест-контроля</span> и акарицидной обработке на следующих типах объектов:</p>
+            <ul class="object-list">
+              <li>пищевые производства</li>
+              <li>пищеблоки</li>
+              <li>рестораны</li>
+              <li>кафе</li>
+              <li>складские помещения</li>
+              <li>жилые помещения</li>
+              <li>места общего пользования</li>
+              <li>офисные помещения</li>
+              <li>базы отдыха</li>
+              <li>подвальные <span class="nowrap">и чердачные</span> помещения</li>
+              <li>территория</li>
+              <li>периметр зданий <span class="nowrap">и сооружений</span></li>
+            </ul>
+            <div class="hero-actions">
+              <a class="btn btn-primary btn-large" data-magnetic href="#request">Подобрать решение <i class="ic" aria-hidden="true"><svg aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></i></a>
+              <a class="round-link" href="tel:+79188266617" aria-label="Позвонить 8 918 826-66-17"><i class="ic" aria-hidden="true"><svg aria-hidden="true" focusable="false"><use href="#i-phone"/></svg></i></a>
+            </div>
+            <p class="price-note" id="price"><i class="ic" aria-hidden="true"><svg aria-hidden="true" focusable="false"><use href="#i-tag"/></svg></i><span><b>Стоимость работ</b> зависит от особенностей объекта. Подберём её после бесплатного выезда и обследования.</span></p>
+            <p class="license-line"><i class="ic" aria-hidden="true"><svg aria-hidden="true" focusable="false"><use href="#i-shield-check"/></svg></i> <span>Лицензия ЕРУЛ №&nbsp;<span class="nowrap">Л064-00111-77/02987662</span></span></p>
+          </div>
+          <div class="hero-visual">
+            <picture>
+              <source type="image/avif" srcset="assets/images/hero-960.avif 960w, assets/images/hero.avif 1920w" sizes="(max-width: 767px) calc((100vw - 68px) * 1.875), (max-width: 1023px) 672px, (max-width: 1180px) 1040px, 1160px">
+              <source type="image/webp" srcset="assets/images/hero-960.webp 960w, assets/images/hero.webp 1920w" sizes="(max-width: 767px) calc((100vw - 68px) * 1.875), (max-width: 1023px) 672px, (max-width: 1180px) 1040px, 1160px">
+              <img src="assets/images/hero.jpg" srcset="assets/images/hero-960.jpg 960w, assets/images/hero.jpg 1920w" sizes="(max-width: 767px) calc((100vw - 68px) * 1.875), (max-width: 1023px) 672px, (max-width: 1180px) 1040px, 1160px" alt="Специалист в защитном костюме проводит санитарную обработку коммерческого помещения" width="1920" height="1280">
+            </picture>
+          </div>
+        </div>
+
+        <div class="proof-rail reveal" role="group" aria-label="Ключевые подтверждения">
+          <div class="proof-item">
+            <i class="ic" aria-hidden="true"><svg aria-hidden="true" focusable="false"><use href="#i-seal-check"/></svg></i>
+            <span><b>Лицензия</b><small>ЕРУЛ №&nbsp;<span class="nowrap">Л064-00111-77/02987662</span></small></span>
+          </div>
+          <div class="proof-item">
+            <i class="ic" aria-hidden="true"><svg aria-hidden="true" focusable="false"><use href="#i-user-focus"/></svg></i>
+            <span><b>Обученные специалисты</b><small>Сертификаты по специальности «дезинфектор»</small></span>
+          </div>
+          <div class="proof-item">
+            <i class="ic" aria-hidden="true"><svg aria-hidden="true" focusable="false"><use href="#i-files"/></svg></i>
+            <span><b>Отчётные документы</b><small>Акты по итогам мероприятий и контроля</small></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="quick-section" aria-labelledby="quick-title">
+      <div class="container">
+        <div class="quick-panel reveal">
+          <div>
+            <p class="section-label section-label-dark">Быстрый подбор</p>
+            <h2 id="quick-title">Подберите решение за <span class="num">2</span> шага</h2>
+          </div>
+          <label class="quick-field">
+            <span class="step-number">1</span>
+            <span><b>Объект</b><small>Выберите тип объекта</small></span>
+            <select id="quickObject" aria-label="Тип объекта для быстрого подбора">
+              <option value="">Выберите объект</option>
+              <option value="food-production">Пищевое производство</option>
+              <option value="kitchen">Пищеблок</option>
+              <option value="restaurant">Ресторан</option>
+              <option value="cafe">Кафе</option>
+              <option value="warehouse">Склад</option>
+              <option value="housing">Жилое помещение</option>
+              <option value="common">Место общего пользования</option>
+              <option value="office">Офис</option>
+              <option value="recreation">База отдыха</option>
+              <option value="basement">Подвал или чердак</option>
+              <option value="territory">Территория</option>
+              <option value="perimeter">Периметр здания</option>
+            </select>
+            <i class="ic" aria-hidden="true"><svg aria-hidden="true" focusable="false"><use href="#i-caret-down"/></svg></i>
+          </label>
+          <i class="ic quick-arrow" aria-hidden="true"><svg aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></i>
+          <label class="quick-field">
+            <span class="step-number">2</span>
+            <span><b>Задача</b><small>Что требует решения</small></span>
+            <select id="quickIssue" aria-label="Задача для быстрого подбора">
+              <option value="">Выберите задачу</option>
+              <option value="insects">Насекомые</option>
+              <option value="rodents">Грызуны</option>
+              <option value="ticks">Клещи на территории</option>
+              <option value="infection">Инфекция, вирус</option>
+              <option value="prevention">Плановая профилактика</option>
+            </select>
+            <i class="ic" aria-hidden="true"><svg aria-hidden="true" focusable="false"><use href="#i-caret-down"/></svg></i>
+          </label>
+          <button class="round-link round-link-dark" id="quickGo" type="button" aria-label="Показать подобранное решение"><span class="quick-go-label" aria-hidden="true">Показать подобранное решение</span><i class="ic" aria-hidden="true"><svg aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></i></button>
+          <svg class="quick-mark" aria-hidden="true" focusable="false"><use href="#logo-bastet"/></svg>
+          <p class="quick-error" id="quickError" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section services-section" id="services" aria-labelledby="services-title">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div>
+            <p class="section-label">Направления работ</p>
+            <h2 id="services-title">Четыре задачи — одна система контроля</h2>
+          </div>
+          <p>Метод, оборудование и препаративную форму подбираем под конкретный объект и характер проблемы.</p>
+        </div>
+
+        <div class="service-gallery reveal">
+          <article class="service-card" data-service-card="insects" data-service="disinsection">
+            <picture>
+              <source type="image/avif" srcset="assets/images/service-disinsection-640.avif 640w, assets/images/service-disinsection.avif 1200w" sizes="(max-width: 767px) calc(100vw - 32px), (max-width: 1023px) 384px, (max-width: 1180px) 500px, 568px">
+              <source type="image/webp" srcset="assets/images/service-disinsection-640.webp 640w, assets/images/service-disinsection.webp 1200w" sizes="(max-width: 767px) calc(100vw - 32px), (max-width: 1023px) 384px, (max-width: 1180px) 500px, 568px">
+              <img src="assets/images/service-disinsection.jpg" srcset="assets/images/service-disinsection-640.jpg 640w, assets/images/service-disinsection.jpg 1200w" sizes="(max-width: 767px) calc(100vw - 32px), (max-width: 1023px) 384px, (max-width: 1180px) 500px, 568px" alt="Дезинсекционная обработка коммерческого помещения" width="1200" height="900" loading="lazy" decoding="async">
+            </picture>
+            <div class="service-card-copy"><span>01</span><h3>Дезинсекция</h3></div>
+            <button type="button" class="service-more" data-service-open="disinsection" aria-expanded="false" aria-controls="sd-disinsection"><span class="visually-hidden">Подробнее о дезинсекции</span><i class="ic" aria-hidden="true"><svg aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></i></button>
+                      <div class="service-card-detail" id="sd-disinsection">
+              <p class="panel-kicker">Дезинсекция</p>
+              <h4>Уничтожение всех видов насекомых внутри и снаружи зданий и сооружений</h4>
+              <p>Профилактическая или истребительская обработка инсектицидными средствами различной препаративной формы — чтобы предупредить появление вредителей или уничтожить уже заселившихся.</p>
+              <ul><li>Орошение</li><li>Фогация</li><li>Ловушки и приманки</li><li>Нанесение геля</li></ul>
+            </div>
+          </article>
+          <article class="service-card" data-service-card="rodents" data-service="deratization">
+            <picture>
+              <source type="image/avif" srcset="assets/images/service-deratization-640.avif 640w, assets/images/service-deratization.avif 1200w" sizes="(max-width: 767px) calc(100vw - 32px), (max-width: 1023px) 384px, (max-width: 1180px) 500px, 568px">
+              <source type="image/webp" srcset="assets/images/service-deratization-640.webp 640w, assets/images/service-deratization.webp 1200w" sizes="(max-width: 767px) calc(100vw - 32px), (max-width: 1023px) 384px, (max-width: 1180px) 500px, 568px">
+              <img src="assets/images/service-deratization.jpg" srcset="assets/images/service-deratization-640.jpg 640w, assets/images/service-deratization.jpg 1200w" sizes="(max-width: 767px) calc(100vw - 32px), (max-width: 1023px) 384px, (max-width: 1180px) 500px, 568px" alt="Установка контрольно-истребительского контейнера" width="1200" height="900" loading="lazy" decoding="async">
+            </picture>
+            <div class="service-card-copy"><span>02</span><h3>Дератизация</h3></div>
+            <button type="button" class="service-more" data-service-open="deratization" aria-expanded="false" aria-controls="sd-deratization"><span class="visually-hidden">Подробнее о дератизации</span><i class="ic" aria-hidden="true"><svg aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></i></button>
+                      <div class="service-card-detail" id="sd-deratization">
+              <p class="panel-kicker">Дератизация, пест-контроль</p>
+              <h4>Уничтожение всех видов грызунов на&nbsp;территории, внутри и&nbsp;по&nbsp;периметру зданий и&nbsp;сооружений</h4>
+              <p>Профилактическая или истребительская обработка родентицидными средствами различной препаративной формы с постоянным контролем точек.</p>
+              <ul><li>Раскладка приманки</li><li>Клеевые пластины и мышеловки</li><li>Запенивание нежелательных дыр</li><li>Закладывание приманки в&nbsp;норы</li></ul>
+            </div>
+          </article>
+          <article class="service-card" data-service-card="ticks" data-service="acaricidal">
+            <picture>
+              <source type="image/avif" srcset="assets/images/service-acaricidal-640.avif 640w, assets/images/service-acaricidal.avif 1200w" sizes="(max-width: 767px) calc(100vw - 32px), (max-width: 1023px) 384px, (max-width: 1180px) 500px, 568px">
+              <source type="image/webp" srcset="assets/images/service-acaricidal-640.webp 640w, assets/images/service-acaricidal.webp 1200w" sizes="(max-width: 767px) calc(100vw - 32px), (max-width: 1023px) 384px, (max-width: 1180px) 500px, 568px">
+              <img src="assets/images/service-acaricidal.jpg" srcset="assets/images/service-acaricidal-640.jpg 640w, assets/images/service-acaricidal.jpg 1200w" sizes="(max-width: 767px) calc(100vw - 32px), (max-width: 1023px) 384px, (max-width: 1180px) 500px, 568px" alt="Акарицидная обработка территории" width="1200" height="900" loading="lazy" decoding="async">
+            </picture>
+            <div class="service-card-copy"><span>03</span><h3>Акарицидная обработка</h3></div>
+            <button type="button" class="service-more" data-service-open="acaricidal" aria-expanded="false" aria-controls="sd-acaricidal"><span class="visually-hidden">Подробнее об акарицидной обработке</span><i class="ic" aria-hidden="true"><svg aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></i></button>
+                      <div class="service-card-detail" id="sd-acaricidal">
+              <p class="panel-kicker">Акарицидная обработка</p>
+              <h4>Уничтожение иксодовых клещей на территории</h4>
+              <p>Начинаем с акарологического обследования методом флажирования — считаем численность клещей и оцениваем высоту и густоту травяного покрова. При необходимости пойманных особей лабораторно проверяют на наличие заболеваний.</p>
+              <ul><li>Флажирование</li><li>Распыление моторным опрыскивателем дальнего действия</li><li>Фогация горячим туманом</li><li>Контроль на 3–5 и 15 день</li></ul>
+            </div>
+          </article>
+          <article class="service-card" data-service-card="infection" data-service="disinfection">
+            <picture>
+              <source type="image/avif" srcset="assets/images/service-disinfection-640.avif 640w, assets/images/service-disinfection.avif 1200w" sizes="(max-width: 767px) calc(100vw - 32px), (max-width: 1023px) 384px, (max-width: 1180px) 500px, 568px">
+              <source type="image/webp" srcset="assets/images/service-disinfection-640.webp 640w, assets/images/service-disinfection.webp 1200w" sizes="(max-width: 767px) calc(100vw - 32px), (max-width: 1023px) 384px, (max-width: 1180px) 500px, 568px">
+              <img src="assets/images/service-disinfection.jpg" srcset="assets/images/service-disinfection-640.jpg 640w, assets/images/service-disinfection.jpg 1200w" sizes="(max-width: 767px) calc(100vw - 32px), (max-width: 1023px) 384px, (max-width: 1180px) 500px, 568px" alt="Дезинфекция помещения методом орошения" width="1200" height="900" loading="lazy" decoding="async">
+            </picture>
+            <div class="service-card-copy"><span>04</span><h3>Дезинфекция</h3></div>
+            <button type="button" class="service-more" data-service-open="disinfection" aria-expanded="false" aria-controls="sd-disinfection"><span class="visually-hidden">Подробнее о дезинфекции</span><i class="ic" aria-hidden="true"><svg aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></i></button>
+                      <div class="service-card-detail" id="sd-disinfection">
+              <p class="panel-kicker">Дезинфекция</p>
+              <h4>Уничтожение или предотвращение распространения инфекций</h4>
+              <p>Профилактическая или заключительная дезинфекция методом орошения рабочего раствора в закрытом помещении или местах общего пользования. Вид препарата, концентрацию и время экспозиции подбираем по виду инфекции и степени её распространения.</p>
+              <ul><li>Профилактическая</li><li>Заключительная</li><li>Орошение рабочим раствором</li><li>Расчёт концентрации и экспозиции</li></ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section system-section" id="equipment" aria-labelledby="system-title">
+      <div class="container">
+        <div class="system-panel reveal">
+          <div class="system-copy">
+            <p class="section-label section-label-dark">Оснащение</p>
+            <h2 id="system-title">Оборудование и препараты</h2>
+            <div class="system-tabs" role="tablist" aria-label="Оборудование и препараты">
+              <button type="button" role="tab" class="system-tab active" id="systemTab-equipment" aria-selected="true" aria-controls="systemContent" data-system="equipment">Оборудование</button>
+              <button type="button" role="tab" class="system-tab" id="systemTab-preparations" aria-selected="false" aria-controls="systemContent" data-system="preparations">Препараты</button>
+            </div>
+            <div class="system-content" id="systemContent" role="tabpanel" aria-labelledby="systemTab-equipment" tabindex="0">
+              <p>Оснащение выбирается под метод обработки и особенности объекта. Работаем только с сертифицированными препаратами нового поколения, учитывая резистентность вредителей.</p>
+              <ul class="equipment-grid">
+                  <li><span class="equipment-ill"><svg aria-hidden="true" focusable="false"><use href="#ill-backpack-battery"/></svg></span><span>Ранцевый опрыскиватель аккумуляторный</span></li>
+                  <li><span class="equipment-ill"><svg aria-hidden="true" focusable="false"><use href="#ill-hot-fog"/></svg></span><span>Генератор горячего тумана</span></li>
+                  <li><span class="equipment-ill"><svg aria-hidden="true" focusable="false"><use href="#ill-cold-fog"/></svg></span><span>Генератор холодного тумана</span></li>
+                  <li><span class="equipment-ill"><svg aria-hidden="true" focusable="false"><use href="#ill-gel-gun"/></svg></span><span>Пистолет для нанесения инсектицидного геля</span></li>
+                  <li><span class="equipment-ill"><svg aria-hidden="true" focusable="false"><use href="#ill-uv-lamp"/></svg></span><span>Ультрафиолетовые лампы</span></li>
+                  <li><span class="equipment-ill"><svg aria-hidden="true" focusable="false"><use href="#ill-kik"/></svg></span><span>КИК — контрольно-истребительский контейнер</span></li>
+                  <li><span class="equipment-ill"><svg aria-hidden="true" focusable="false"><use href="#ill-livetrap"/></svg></span><span>Живоловка металлическая</span></li>
+                  <li><span class="equipment-ill"><svg aria-hidden="true" focusable="false"><use href="#ill-ultrasonic"/></svg></span><span>Ультразвуковой отпугиватель</span></li>
+                  <li><span class="equipment-ill"><svg aria-hidden="true" focusable="false"><use href="#ill-backpack-petrol"/></svg></span><span>Ранцевый бензиновый мотоопрыскиватель</span></li>
+                  <li><span class="equipment-ill"><svg aria-hidden="true" focusable="false"><use href="#ill-entomo-kit"/></svg></span><span>Набор энтомолога</span></li>
+                  <li><span class="equipment-ill"><svg aria-hidden="true" focusable="false"><use href="#ill-flag"/></svg></span><span>Флаг для флажирования территории</span></li>
+                </ul>
+            </div>
+            <noscript>
+              <div class="nojs-system">
+                <h3>Полный перечень оснащения</h3>
+                <p>Ранцевые аккумуляторный и бензиновый опрыскиватели; генераторы горячего и холодного тумана; пистолет для инсектицидного геля; ультрафиолетовые лампы; КИК; металлическая живоловка; ультразвуковой отпугиватель; набор энтомолога; флаг для обследования территории.</p>
+                <h3>Типы и классы препаратов</h3>
+                <p>Инсектицидные гели, микрокапсулированные концентраты, ловушки и гранулированные приманки; родентицидные приманки и пена, КИК, липкие пластины и ультразвуковые отпугиватели; жидкие концентраты и порошки для акарицидной обработки; жидкие и таблетированные дезинфектанты.</p>
+              </div>
+            </noscript>
+          </div>
+          <picture class="system-image" id="systemImage">
+            <source data-system-format="avif" type="image/avif" srcset="assets/images/equipment-tab-800.avif 800w, assets/images/equipment-tab.avif 1600w" sizes="(max-width: 767px) calc((100vw - 32px) * 1.1), (max-width: 1023px) 700px, (min-width: 1384px) 576px, 42vw">
+            <source data-system-format="webp" type="image/webp" srcset="assets/images/equipment-tab-800.webp 800w, assets/images/equipment-tab.webp 1600w" sizes="(max-width: 767px) calc((100vw - 32px) * 1.1), (max-width: 1023px) 700px, (min-width: 1384px) 576px, 42vw">
+            <img src="assets/images/equipment-tab.jpg" srcset="assets/images/equipment-tab-800.jpg 800w, assets/images/equipment-tab.jpg 1600w" sizes="(max-width: 767px) calc((100vw - 32px) * 1.1), (max-width: 1023px) 700px, (min-width: 1384px) 576px, 42vw" alt="Профессиональное оборудование для санитарной обработки" width="1600" height="1100" loading="lazy" decoding="async">
+          </picture>
+        </div>
+      </div>
+    </section>
+
+    <section class="section process-section" id="process" aria-labelledby="process-title">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div><p class="section-label">Процесс</p><h2 id="process-title">Как мы работаем</h2></div>
+          <p>Последовательность сохраняется, а конкретный метод определяется после обследования объекта.</p>
+        </div>
+        <ol class="process-list reveal">
+          <li><span><i class="ic" aria-hidden="true"><svg aria-hidden="true" focusable="false"><use href="#i-magnifying-glass"/></svg></i><b aria-hidden="true">01</b></span><h3>Обследование объекта</h3><p>Определяем условия, вид вредителя и очаги.</p></li>
+          <li><span><i class="ic" aria-hidden="true"><svg aria-hidden="true" focusable="false"><use href="#i-clipboard-text"/></svg></i><b aria-hidden="true">02</b></span><h3>Подбор решения</h3><p>Выбираем метод, оборудование и препарат.</p></li>
+          <li><span><i class="ic" aria-hidden="true"><svg aria-hidden="true" focusable="false"><use href="#i-spray-bottle"/></svg></i><b aria-hidden="true">03</b></span><h3>Проведение обработки</h3><p>Выполняем согласованный комплекс мероприятий.</p></li>
+          <li><span><i class="ic" aria-hidden="true"><svg aria-hidden="true" focusable="false"><use href="#i-check-circle"/></svg></i><b aria-hidden="true">04</b></span><h3>Контроль</h3><p>Оцениваем эффективность проведённых мероприятий.</p></li>
+          <li><span><i class="ic" aria-hidden="true"><svg aria-hidden="true" focusable="false"><use href="#i-file-text"/></svg></i><b aria-hidden="true">05</b></span><h3>Отчётные документы</h3><p>Передаём предусмотренные акты.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section control-section" aria-labelledby="control-title">
+      <div class="container control-grid reveal">
+        <div>
+          <p class="section-label">Акарицидная обработка</p>
+          <h2 id="control-title">Контроль эффективности после обработки</h2>
+          <p>Флажирование показывает реальную заселённость территории: клещи цепляются за светлую ткань, протаскиваемую по траве.</p>
+        </div>
+        <ol class="control-timeline">
+          <li><b>День 0</b><strong>Обследование и&nbsp;обработка</strong><span>Оценка территории и проведение мероприятий.</span></li>
+          <li><b>3–5 день</b><strong>Первый контроль</strong><span>Повторное обследование методом флажирования.</span></li>
+          <li><b>15 день</b><strong>Повторный контроль</strong><span>Результат фиксируется в акте оценки эффективности.</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section documents-section" id="documents" aria-labelledby="documents-title">
+      <div class="container">
+        <div class="documents-panel reveal">
+          <div><p class="section-label section-label-dark">Подтверждение</p><h2 id="documents-title">Отчётные документы</h2></div>
+          <article><i class="ic" aria-hidden="true"><svg aria-hidden="true" focusable="false"><use href="#i-file-search"/></svg></i><div><h3>Акт акарологического обследования</h3><p>Результаты флажирования и данные обследования территории.</p></div></article>
+          <article><i class="ic" aria-hidden="true"><svg aria-hidden="true" focusable="false"><use href="#i-file-text"/></svg></i><div><h3>Акт санитарных мероприятий</h3><p>Объект, площадь, применённые препараты и методы.</p></div></article>
+          <article><i class="ic" aria-hidden="true"><svg aria-hidden="true" focusable="false"><use href="#i-file-check"/></svg></i><div><h3>Акт оценки эффективности</h3><p>Результаты контрольного обследования.</p></div></article>
+        </div>
+
+        <div class="license-panel reveal">
+          <div class="license-copy">
+            <p class="section-label">Разрешительные документы</p>
+            <h2>Работаем по&nbsp;лицензии</h2>
+            <p class="license-number"><span class="license-id">ЕРУЛ №&nbsp;<span class="nowrap">Л064-00111-77/02987662</span></span> <span class="license-date">от 18.08.2025</span></p>
+            <p>Деятельность по оказанию услуг по дезинфекции, дезинсекции и дератизации в целях обеспечения санитарно-эпидемиологического благополучия населения.</p>
+          </div>
+          <div class="clients-copy">
+            <span>Опыт работы с&nbsp;коммерческими и&nbsp;бюджетными организациями</span>
+            <ul>
+              <li>ПАО «ЦМТ»</li>
+              <li>ГК «ТРЕЙД»</li>
+              <li>МГУ им. М. В. Ломоносова</li>
+              <li>ГБУК г. Москвы «Театр им. Моссовета»</li>
+              <li>ФГАУ «НМИЦ здоровья детей» Минздрава России</li>
+            </ul>
+            <small>Названия приведены как перечень контрагентов, с которыми есть опыт работы. Товарные знаки не используются.</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section request-section" id="request" aria-labelledby="request-title">
+      <div class="container">
+        <div class="request-heading reveal">
+          <div><p class="section-label">Заявка</p><h2 id="request-title">Подберём решение для вашего объекта</h2></div>
+          <p>Отметьте объект и задачу — сайт соберёт состав работ, оснащение, классы препаратов и документы. Данные отправляются только с&nbsp;вашего устройства.</p>
+        </div>
+        <noscript>
+          <div class="nojs-request">
+            <p>Ответим на звонок или письмо.</p>
+            <p><a href="tel:+79188266617">8 (918) 826-66-17</a> · <a href="mailto:aziev-robert@mail.ru">aziev-robert@mail.ru</a></p>
+          </div>
+        </noscript>
+        <div class="request-shell reveal">
+          <form class="request-form" id="requestForm" novalidate>
+            <p class="form-note">* — обязательное поле</p>
+            <div class="field">
+              <label for="fObject">Тип объекта</label>
+              <select id="fObject">
+                <option value="">— выберите объект —</option>
+                <option value="food-production">Пищевые производства</option><option value="kitchen">Пищеблоки</option><option value="restaurant">Рестораны</option><option value="cafe">Кафе</option><option value="warehouse">Складские помещения</option><option value="housing">Жилые помещения</option><option value="common">Места общего пользования</option><option value="office">Офисные помещения</option><option value="recreation">Базы отдыха</option><option value="basement">Подвалы и чердаки</option><option value="territory">Территория</option><option value="perimeter">Периметр зданий</option>
+              </select>
+            </div>
+            <fieldset class="field issues-field">
+              <legend>Что требует решения</legend>
+              <div class="issues" id="issuesBox">
+                <label class="choice"><input type="checkbox" name="issue" value="insects"><span>Насекомые</span></label>
+                <label class="choice"><input type="checkbox" name="issue" value="rodents"><span>Грызуны</span></label>
+                <label class="choice"><input type="checkbox" name="issue" value="ticks"><span>Клещи на территории</span></label>
+                <label class="choice"><input type="checkbox" name="issue" value="infection"><span>Инфекция, вирус</span></label>
+                <label class="choice"><input type="checkbox" name="issue" value="prevention"><span>Плановая профилактика</span></label>
+              </div>
+            </fieldset>
+            <div class="form-row">
+              <div class="field"><label for="fName">Как к вам обращаться</label><input id="fName" name="name" autocomplete="name" placeholder="Имя"></div>
+              <div class="field"><label for="fPhone">Телефон *</label><input id="fPhone" name="phone" inputmode="tel" autocomplete="tel" placeholder="+7 (___) ___-__-__" required><p class="field-error" id="fPhoneError" hidden></p></div>
+            </div>
+            <div class="field"><label for="fPlace">Адрес или площадь</label><input id="fPlace" name="place" placeholder="Например: склад 800 м², Москва"></div>
+            <div class="field"><label for="fComment">Комментарий</label><textarea id="fComment" name="comment" rows="4" placeholder="Что уже пробовали, когда удобно принять, есть ли требования по времени работ"></textarea></div>
+            <label class="consent"><input id="fConsent" type="checkbox" required><span>Даю согласие на обработку персональных данных в соответствии с <a href="privacy.html">политикой обработки персональных данных</a>. Сайт не хранит заявку.</span></label>
+            <p class="field-error field-error-consent" id="fConsentError" hidden></p>
+            <div class="form-actions">
+              <button class="btn btn-primary" id="btnMail" data-magnetic type="button"><i class="ic" aria-hidden="true"><svg aria-hidden="true" focusable="false"><use href="#i-envelope-simple"/></svg></i> Отправить письмом</button>
+              <button class="btn btn-ghost" id="btnCopy" type="button"><i class="ic" aria-hidden="true"><svg aria-hidden="true" focusable="false"><use href="#i-copy"/></svg></i> Копировать</button>
+            </div>
+            <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+          </form>
+          <aside class="picker-result" id="pickerResult" tabindex="-1" aria-labelledby="pickerTitle">
+            <p class="panel-kicker">Подобранное решение</p>
+            <h3 id="pickerTitle">Состав работ появится здесь</h3>
+            <p>Выберите объект и задачу. Покажем методы, оборудование, классы препаратов и итоговые документы.</p>
+            <ul class="result-preview"><li><i class="ic" aria-hidden="true"><svg aria-hidden="true" focusable="false"><use href="#i-strategy"/></svg></i> Метод обработки</li><li><i class="ic" aria-hidden="true"><svg aria-hidden="true" focusable="false"><use href="#i-toolbox"/></svg></i> Оснащение</li><li><i class="ic" aria-hidden="true"><svg aria-hidden="true" focusable="false"><use href="#i-files"/></svg></i> Отчётные акты</li></ul>
+          </aside>
+          <p class="visually-hidden" id="pickerLive" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contacts" aria-labelledby="contacts-title">
+      <picture class="contact-photo">
+        <source type="image/avif" srcset="assets/images/contact-800.avif 800w, assets/images/contact.avif 1600w" sizes="(min-width: 1384px) 1320px, (max-width: 767px) 384px, calc(100vw - 64px)">
+        <source type="image/webp" srcset="assets/images/contact-800.webp 800w, assets/images/contact.webp 1600w" sizes="(min-width: 1384px) 1320px, (max-width: 767px) 384px, calc(100vw - 64px)">
+        <img src="assets/images/contact.jpg" srcset="assets/images/contact-800.jpg 800w, assets/images/contact.jpg 1600w" sizes="(min-width: 1384px) 1320px, (max-width: 767px) 384px, calc(100vw - 64px)" alt="Специалист готовит план обработки объекта" width="1600" height="1000" loading="lazy" decoding="async">
+      </picture>
+      <div class="contact-shade" aria-hidden="true"></div>
+      <div class="container contact-inner reveal">
+        <div><p class="section-label">Связаться</p><h2 id="contacts-title">Обсудим ваш объект</h2><p>Ответим на звонок или письмо.</p></div>
+        <div class="contact-links">
+          <a href="tel:+79188266617"><i class="ic" aria-hidden="true"><svg aria-hidden="true" focusable="false"><use href="#i-phone"/></svg></i><span><b>8 (918) 826-66-17</b><small>Звонок</small></span></a>
+          <a href="mailto:aziev-robert@mail.ru"><i class="ic" aria-hidden="true"><svg aria-hidden="true" focusable="false"><use href="#i-envelope-simple"/></svg></i><span><b>aziev-robert@mail.ru</b><small>Заявки и документы</small></span></a>
+        </div>
+        <a class="btn btn-primary btn-large" href="#request">Подобрать решение <i class="ic" aria-hidden="true"><svg aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></i></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-main">
+      <div class="footer-id">
+        <a class="brand footer-brand" href="#top" aria-label="Бастет — на главную"><svg class="brand-mark" aria-hidden="true" focusable="false"><use href="#logo-bastet"/></svg><span><b>Бастет</b><small>дезинсекция · дератизация</small></span></a>
+        <p class="footer-owner">ИП Азиев Р. Р.</p>
+      </div>
+      <dl class="requisites">
+        <div><dt>ИНН</dt><dd>440701851711</dd></div>
+        <div><dt>ОГРНИП</dt><dd>325774600487755</dd></div>
+        <div><dt>Город</dt><dd>Москва</dd></div>
+      </dl>
+      <div class="footer-nav"><a href="#services">Услуги</a><a href="#process">Как работаем</a><a href="#documents">Документы</a><a href="privacy.html">Политика ПДн</a></div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© <span id="year">2026</span> «Бастет» · ИП Азиев Р. Р. · bastet-dez.ru · Лицензия ЕРУЛ №&nbsp;<span class="nowrap">Л064-00111-77/02987662</span> от 18.08.2025. Сайт носит информационный характер и не является публичной офертой.</p>
+      <p>Изображения носят иллюстративный характер.</p>
+    </div>
+  </footer>
+
+  <a class="floating-contact" href="tel:+79188266617" aria-label="Позвонить 8 918 826-66-17"><i class="ic" aria-hidden="true"><svg aria-hidden="true" focusable="false"><use href="#i-phone"/></svg></i><span>Позвонить</span></a>
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Бастет",
+  "legalName": "ИП Азиев Роберт Русланович",
+  "url": "https://bastet-dez.ru/",
+  "description": "Дезинсекция, дератизация и пест-контроль, акарицидная обработка, дезинфекция объектов. Лицензия ЕРУЛ, сертифицированные препараты, отчётные документы.",
+  "logo": "https://bastet-dez.ru/assets/icons/icon-512.png",
+  "image": "https://bastet-dez.ru/assets/og-cover.jpg",
+  "telephone": "+79188266617",
+  "email": "aziev-robert@mail.ru",
+  "address": { "@type": "PostalAddress", "addressLocality": "Москва", "addressCountry": "RU" },
+  "founder": { "@type": "Person", "name": "Азиев Роберт Русланович" },
+  "taxID": "440701851711",
+  "identifier": "325774600487755",
+  "hasCredential": "Лицензия ЕРУЛ № Л064-00111-77/02987662 от 18.08.2025",
+  "makesOffer": [
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Дезинсекция", "description": "Уничтожение всех видов насекомых внутри и снаружи зданий и сооружений: орошение, фогация, ловушки и приманки, нанесение геля." } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Дератизация, пест-контроль", "description": "Уничтожение всех видов грызунов на территории, внутри и по периметру зданий: раскладка приманки, клеевые пластины и мышеловки, запенивание дыр, закладка приманки в норы." } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Акарицидная обработка", "description": "Уничтожение иксодовых клещей на территории с акарологическим обследованием методом флажирования и контролем эффективности на 3–5 и 15 день." } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Дезинфекция", "description": "Профилактическая и заключительная дезинфекция методом орошения рабочего раствора; концентрация и экспозиция подбираются по виду инфекции." } }
+  ]
+}
+</script>
+<script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

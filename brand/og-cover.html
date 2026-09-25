@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Бастет — OG-обложка</title>
+<link rel="icon" href="../assets/icons/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="brand.css">
+<!-- Рендер: node tools/render.mjs http://127.0.0.1:8747/brand/og-cover.html brand/og-cover.png 1200 630 0
+     JPEG:   sips -s format jpeg -s formatOptions 82 brand/og-cover.png --out assets/og-cover.jpg -->
+<style>
+  body { width: 1200px; height: 630px; overflow: hidden; position: relative; background: #EFE6D6; }
+  .photo { position: absolute; inset: 0; background: url("../assets/images/hero-1920.jpg") 0 -70px / 1320px auto no-repeat; }
+  /* мягкая ivory-вуаль только над светлой стеной слева: гасит полосы солнца под текстом */
+  .veil { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(247,242,232,.84) 0%, rgba(247,242,232,.78) 34%, rgba(247,242,232,.55) 43%, rgba(247,242,232,0) 56%); }
+  .copy { position: absolute; left: 64px; top: 0; bottom: 0; display: flex; flex-direction: column; justify-content: center; padding-bottom: 64px; }
+  .lockup { font-size: 96px; gap: .24em; }
+  .lockup .mk { margin-bottom: -.035em; }
+  .rule { width: 56px; height: 1px; margin: 30px 0 20px; background: var(--sage-deep); }
+  .line { margin: 0; font: 500 21.5px/1.3 "Inter", sans-serif; letter-spacing: .005em; color: var(--ink); }
+</style>
+</head>
+<body>
+<svg class="sprite" aria-hidden="true"></svg>
+<div class="photo"></div>
+<div class="veil"></div>
+<div class="copy">
+  <span class="lockup" role="img" aria-label="Бастет">
+    <svg class="mk" viewBox="15.5 3.2 34 56.8" aria-hidden="true"><use href="#logo-bastet" width="64" height="64"/></svg>
+    <span class="wm"><b>Бастет</b></span>
+  </span>
+  <div class="rule"></div>
+  <p class="line">Дезинсекция · дератизация · дезинфекция</p>
+</div>
+<script src="load-sprite.js"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /tools/
+Disallow: /_dev/
+
+# Домен по пожеланию заказчика — проверить регистрацию
+Sitemap: https://bastet-dez.ru/sitemap.xml
