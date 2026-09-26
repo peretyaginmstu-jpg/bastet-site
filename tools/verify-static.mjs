@@ -64,7 +64,23 @@ for (const name of readdirSync(root).filter((file) => /\.md$/i.test(file))) {
 }
 check(index.includes("зависит от особенностей объекта. Подберём её после бесплатного выезда и обследования.") && index.includes('class="price-note"'), 'Нет блока о ценообразовании');
 check(/<title>[^<]*Бастет/.test(index) && /<title>[^<]*Бастет/.test(privacy), 'Нет названия «Бастет» в title');
-check(index.includes('https://bastet-dez.ru/') && !index.includes('example.ru'), 'Canonical/OG должны указывать на bastet-dez.ru'),
+check(index.includes('https://bastet-dez.ru/') && !index.includes('example.ru'), 'Canonical/OG должны указывать на bastet-dez.ru');
+/* Правки заказчика 26.09.2026. */
+check(!index.includes('control-section') && !index.includes('Контроль эффективности после обработки'),
+  'Блок «Контроль эффективности после обработки» убран по просьбе заказчика (есть в услуге 03)');
+{
+  const disinfection = (index.match(/<div class="service-card-detail" id="sd-disinfection">[\s\S]*?<\/ul>/) || [])[0] || '';
+  const tags = [...disinfection.matchAll(/<li>([^<]*)<\/li>/g)].map((m) => m[1]);
+  const expected = ['Профилактическая (точечное орошение в местах риска заражения)', 'Заключительная (орошение генератором холодного тумана в закрытом пространстве)'];
+  check(JSON.stringify(tags) === JSON.stringify(expected), 'Приписки к дезинфекции должны быть ровно две, текстом заказчика: ' + tags.join(' | '));
+  check(expected.every((t) => data.includes(`'${t}'`)) && !data.includes('Орошение рабочим раствором'), 'Методы дезинфекции в js/data.js не совпадают с приписками на странице');
+}
+check(!/quick-mark/.test(index) && !/quick-mark/.test(css), 'Водяной знак-кошка удалён вместе со старым логотипом');
+for (const [name, html] of [['index.html', index], ['privacy.html', privacy]]) {
+  check(/<symbol id="logo-bastet" viewBox="21 37 169 109">/.test(html), `${name}: в спрайте не логотип заказчика (монограмма + «БАСТЕТ», brand/build-logo.py)`);
+  check((html.match(/<span class="visually-hidden">Бастет<\/span>/g) || []).length === 2, `${name}: у логотипа в шапке и подвале нет текстового имени «Бастет»`);
+  check(!/bastet-badge|bastet-mark|logo-eye/.test(html), `${name}: остались ссылки на старый знак-кошку`);
+}
 check(index.includes('сертифицированными препаратами нового поколения'), 'Пропущен факт о сертифицированных препаратах нового поколения');
 check(index.includes('резистентность вредителей'), 'Пропущен факт об учёте резистентности вредителей');
 check(index.includes('ГБУК г. Москвы «Театр им. Моссовета»'), 'Неполное наименование контрагента Театр им. Моссовета');

@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1600">
+<title>Бастет — знак и фирменный блок</title>
+<link rel="icon" href="../assets/icons/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="brand.css">
+<!-- Рендер: node tools/render.mjs http://127.0.0.1:8747/brand/logo-sheet.html brand/logo-sheet.png 1600 1200 0 -->
+<style>
+  body { width: 1600px; height: 1200px; overflow: hidden; background: var(--ivory); font-size: 13px; line-height: 1.45; }
+  .sheet { position: absolute; inset: 36px 48px 32px; display: grid; gap: 18px;
+           grid-template-columns: 520px 1fr; grid-template-rows: auto 392px 238px 176px 1fr; }
+  .row3 { grid-column: 1 / -1; display: grid; grid-template-columns: 340px 340px 1fr; gap: 18px; }
+  .head { grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: baseline; }
+  .head h1 { margin: 0; font: 400 30px/1.1 "Prata", Georgia, serif; color: var(--sage-dark); }
+  .head span { color: var(--muted); font-size: 12px; letter-spacing: .02em; }
+  .tile { position: relative; border: 1px solid rgba(63,81,66,.18); border-radius: 18px; background: var(--ivory); overflow: hidden; }
+  .tile.milk { background: var(--milk); }
+  .tile.dk { background: var(--sage-dark); border-color: var(--sage-dark); color: var(--milk); }
+  .lbl { position: absolute; left: 20px; top: 16px; font-size: 10.5px; font-weight: 650; letter-spacing: .14em; text-transform: uppercase; color: var(--sage-deep); }
+  .dk .lbl, .half.dk .lbl { color: var(--sage); }
+  .note { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
+  .dk .note { color: var(--sage); }
+  .center { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+  svg.use { display: block; }
+
+  /* A — знак */
+  .a-mark { position: absolute; left: 30px; top: 58px; width: 214px; height: 214px; color: var(--sage-dark); }
+  .a-build { position: absolute; right: 30px; top: 58px; width: 200px; height: 200px; }
+  .a-note { position: absolute; left: 24px; right: 24px; bottom: 18px; }
+  .a-cap { position: absolute; right: 30px; top: 262px; width: 200px; margin: 0; font-size: 10.5px; color: var(--muted); text-align: center; }
+
+  /* B, C — локапы */
+  .bc { display: grid; grid-template-rows: 1fr 1fr; gap: 18px; }
+  .bc .lockup { font-size: 76px; }
+
+  /* D — размеры */
+    .sizes { position: absolute; left: 20px; right: 16px; bottom: 46px; display: flex; align-items: flex-end; gap: 20px; }
+  .sizes figure { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .sizes figcaption { font-size: 10.5px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .tile.dk figcaption { color: var(--sage); }
+  .sizes svg { color: var(--sage-dark); }
+  .tile.dk .sizes svg { color: var(--milk); --logo-eye: var(--sage-dark); }
+  .d-note { position: absolute; left: 20px; right: 16px; bottom: 16px; margin: 0; font-size: 11px; color: var(--muted); }
+  .tile.dk .d-note { color: var(--sage); }
+
+  /* E — бейдж и фавикон */
+  .e-badges { position: absolute; left: 20px; top: 44px; display: flex; gap: 16px; align-items: flex-end; }
+  .e-badges figure { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 6px; font-size: 10.5px; color: var(--muted); }
+  .e-badges .on-dk { background: var(--sage-dark); border-radius: 12px; padding: 8px; }
+  .e-badges img { display: block; }
+  .e-badges .ios { border-radius: 15px; box-shadow: 0 0 0 1px rgba(40,49,43,.12); }
+  .tabs { position: absolute; right: 20px; top: 50px; width: 300px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .strip { height: 42px; border-radius: 10px; padding: 7px 8px 0; display: flex; }
+  .strip .tab { flex: 1; min-width: 0; border-radius: 9px 9px 0 0; display: flex; align-items: center; gap: 8px; padding: 0 12px; font-size: 12px; white-space: nowrap; overflow: hidden; }
+  .strip .tab span { overflow: hidden; text-overflow: ellipsis; }
+  .strip.lt { background: #DEE1E6; } .strip.lt .tab { background: #FFFFFF; color: #3C4043; }
+  .strip.dt { background: #202124; } .strip.dt .tab { background: #35363A; color: #E8EAED; }
+  .e-note { position: absolute; left: 20px; right: 20px; bottom: 14px; }
+  .tabs small { font-size: 10.5px; color: var(--muted); }
+
+  /* F — палитра */
+  .pal { position: absolute; left: 20px; right: 20px; top: 48px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px 22px; }
+  .pal div { display: grid; grid-template-columns: 40px 1fr; gap: 1px 12px; align-items: center; font-size: 11.5px; line-height: 1.3; }
+  .pal i { grid-row: span 3; width: 40px; height: 40px; border-radius: 10px; box-shadow: inset 0 0 0 1px rgba(40,49,43,.14); }
+  .pal b { font-weight: 600; }
+  .pal em { font-style: normal; color: var(--muted); }
+  .pal code { font: 500 11px/1.3 "Inter", sans-serif; font-variant-numeric: tabular-nums; color: var(--ink); }
+
+  /* G — охранное поле */
+  .clear { position: absolute; left: 20px; top: 50px; padding: 22px; outline: 1px dashed rgba(122,95,63,.55); }
+  .clear .lockup { font-size: 38px; }
+  .clear .x { position: absolute; font: 600 10px/1 "Inter", sans-serif; color: var(--ochre-ink); }
+  .clear .bar { position: absolute; background: rgba(122,95,63,.1); }
+  .g-note { position: absolute; left: 288px; right: 20px; top: 50px; font-size: 11.5px; }
+
+  /* H — другие варианты */
+  .alts { grid-column: 1 / -1; }
+  .alts .row { position: absolute; left: 20px; right: 20px; top: 44px; bottom: 16px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .alt { display: grid; grid-template-columns: 112px 1fr; gap: 16px; align-items: center; padding: 12px 16px; border-radius: 14px; background: var(--milk); border: 1px solid rgba(63,81,66,.12); }
+  .alt svg { width: 112px; height: 112px; display: block; }
+  .alt b { display: block; font: 400 18px/1.2 "Prata", Georgia, serif; color: var(--sage-dark); margin-bottom: 4px; }
+  .alt p { margin: 0; font-size: 12px; color: var(--muted); line-height: 1.45; }
+</style>
+</head>
+<body>
+<svg class="sprite" aria-hidden="true"></svg>
+<div class="sheet">
+  <header class="head">
+    <h1>Бастет — знак и фирменный блок</h1>
+    <span>Prata 400 · Inter 400–700 · сетка 64 × 64</span>
+  </header>
+
+  <!-- A. Знак -->
+  <section class="tile milk" style="grid-row: 2">
+    <span class="lbl">Знак</span>
+    <svg class="use a-mark" viewBox="0 0 64 64" aria-label="Знак Бастет"><use href="#logo-bastet" width="64" height="64"/></svg>
+    <svg class="a-build" viewBox="0 0 64 64" aria-hidden="true">
+      <g stroke="#3F5142" stroke-opacity=".09" stroke-width=".2"><path d="M4 0V64M8 0V64M12 0V64M16 0V64M20 0V64M24 0V64M28 0V64M32 0V64M36 0V64M40 0V64M44 0V64M48 0V64M52 0V64M56 0V64M60 0V64M0 4H64M0 8H64M0 12H64M0 16H64M0 20H64M0 24H64M0 28H64M0 32H64M0 36H64M0 40H64M0 44H64M0 48H64M0 52H64M0 56H64M0 60H64"/></g>
+      <use href="#logo-bastet" width="64" height="64" style="color:#3F5142;opacity:.14;--logo-eye:#3F5142"/>
+      <g fill="none" stroke="#7A5F3F" stroke-width=".32" stroke-opacity=".75">
+        <circle cx="26.5" cy="49" r="11"/>
+        <path d="M13.3 50.6 L28.7 20.5" stroke-dasharray="1 .8"/>
+        <circle cx="42.5" cy="53" r="2"/><circle cx="42.5" cy="53" r="7" stroke-dasharray="1 .8"/>
+        <circle cx="47" cy="49.1" r="2.5" stroke-dasharray="1 .8"/>
+        <path d="M4 60H60" stroke-dasharray="1 .8"/>
+      </g>
+      <g fill="#7A5F3F"><circle cx="26.5" cy="49" r=".6"/><circle cx="42.5" cy="53" r=".6"/><circle cx="28.75" cy="19.6" r=".75"/><circle cx="35.5" cy="7.1" r=".75"/></g>
+    </svg>
+    <p class="a-cap">Построение на сетке 64 × 64</p>
+    <p class="note a-note">Сидящая Бастет в профиль, как египетская статуэтка. Бедро — окружность R&nbsp;11, спина — касательная к ней; выемка затылка и второе ухо отделяют голову от спины. Хвост 5/64 и&nbsp;прорезь 4/64 — концентрические дуги, поэтому изгиб мягкий, а толщина постоянна. Глаз — песочная инкрустация, ниже 24&nbsp;px скрыт.</p>
+  </section>
+
+  <!-- B, C. Локапы -->
+  <div class="bc" style="grid-row: 2">
+    <section class="tile">
+      <span class="lbl">Основной локап · ivory #F7F2E8</span>
+      <div class="center" style="top:14px">
+        <span class="lockup" role="img" aria-label="Бастет — дезинсекция · дератизация"><svg class="mk" viewBox="15.5 3.2 34 56.8" aria-hidden="true"><use href="#logo-bastet" width="64" height="64"/></svg><span class="wm"><b>Бастет</b><small>дезинсекция · дератизация</small></span></span>
+      </div>
+    </section>
+    <section class="tile dk">
+      <span class="lbl">Негатив · шалфей #3F5142</span>
+      <div class="center" style="top:14px">
+        <span class="lockup neg" role="img" aria-label="Бастет — дезинсекция · дератизация"><svg class="mk" viewBox="15.5 3.2 34 56.8" aria-hidden="true"><use href="#logo-bastet" width="64" height="64"/></svg><span class="wm"><b>Бастет</b><small>дезинсекция · дератизация</small></span></span>
+      </div>
+    </section>
+  </div>
+
+  <!-- D. Размеры -->
+  <div class="row3" style="grid-row: 3">
+  <section class="tile">
+    <span class="lbl">Размеры · ivory</span>
+    <div class="sizes"><figure><svg class="use" width="96" height="96" viewBox="0 0 64 64"><use href="#logo-bastet" width="64" height="64"/></svg><figcaption>96</figcaption></figure><figure><svg class="use" width="48" height="48" viewBox="0 0 64 64"><use href="#logo-bastet" width="64" height="64"/></svg><figcaption>48</figcaption></figure><figure><svg class="use" width="32" height="32" viewBox="0 0 64 64"><use href="#logo-bastet" width="64" height="64"/></svg><figcaption>32</figcaption></figure><figure><svg class="use" width="24" height="24" viewBox="0 0 64 64"><use href="#logo-bastet-small" width="64" height="64"/></svg><figcaption>24</figcaption></figure><figure><svg class="use" width="16" height="16" viewBox="0 0 64 64"><use href="#logo-bastet-small" width="64" height="64"/></svg><figcaption>16</figcaption></figure></div>
+    <p class="d-note">24 и 16 px — малая версия: крупнее, без глаза</p>
+  </section>
+  <section class="tile dk">
+    <span class="lbl">Одноцветный · молоко</span>
+    <div class="sizes"><figure><svg class="use" width="96" height="96" viewBox="0 0 64 64"><use href="#logo-bastet" width="64" height="64"/></svg><figcaption>96</figcaption></figure><figure><svg class="use" width="48" height="48" viewBox="0 0 64 64"><use href="#logo-bastet" width="64" height="64"/></svg><figcaption>48</figcaption></figure><figure><svg class="use" width="32" height="32" viewBox="0 0 64 64"><use href="#logo-bastet" width="64" height="64"/></svg><figcaption>32</figcaption></figure><figure><svg class="use" width="24" height="24" viewBox="0 0 64 64"><use href="#logo-bastet-small" width="64" height="64"/></svg><figcaption>24</figcaption></figure><figure><svg class="use" width="16" height="16" viewBox="0 0 64 64"><use href="#logo-bastet-small" width="64" height="64"/></svg><figcaption>16</figcaption></figure></div>
+    <p class="d-note">Один цвет, глаз вырезан и показывает фон</p>
+  </section>
+
+  <!-- E. Бейдж и фавикон -->
+  <section class="tile milk">
+    <span class="lbl">Знак в арке · фавикон и аватар</span>
+    <div class="e-badges">
+      <figure><img src="bastet-badge.svg" width="96" height="96" alt="Знак в арке"><span>основной</span></figure>
+      <figure><span class="on-dk"><img src="bastet-badge-dark.svg" width="80" height="80" alt="Знак в арке, тёмный вариант" style="display:block"></span><span>тёмный вариант</span></figure>
+      <figure><img class="ios" src="../assets/icons/apple-touch-icon.png" width="64" height="64" alt="Иконка 180 px"><span>иконка 180 px</span></figure>
+    </div>
+    <div class="tabs">
+      <div class="strip lt"><div class="tab"><img src="../assets/icons/favicon.svg" width="16" height="16" alt=""><span>Бастет — дезинсекция, дератизация и дезинфекция объектов в Москве</span></div></div>
+      <div class="strip dt"><div class="tab"><img src="../assets/icons/favicon.svg" width="16" height="16" alt=""><span>Бастет — дезинсекция, дератизация и дезинфекция объектов в Москве</span></div></div>
+      <small>Фавикон 16 px на светлой и тёмной вкладке</small>
+    </div>
+    <p class="note e-note">Пастельная арка-портал с тонким контуром и песочным порогом — как арка на первом экране сайта. У фавикона собственный фон, поэтому он читается на любой вкладке. Тёмный вариант — шалфей #556B57, не серый и не чёрный.</p>
+  </section>
+  </div>
+
+  <!-- F. Палитра -->
+  <section class="tile" style="grid-row: 4; grid-column: 2">
+    <span class="lbl">Палитра знака · контраст WCAG</span>
+    <div class="pal">
+      <div><i style="background:#3F5142"></i><b>Шалфей тёмный</b><code>#3F5142</code><em>знак, название · 7,63 : 1 к ivory</em></div>
+      <div><i style="background:#556B57"></i><b>Шалфей глубокий</b><code>#556B57</code><em>дескриптор · 5,19 : 1 к ivory</em></div>
+      <div><i style="background:#C8D5C1"></i><b>Шалфей пастель</b><code>#C8D5C1</code><em>арка бейджа · кошка на ней 5,57 : 1</em></div>
+      <div><i style="background:#E8D7BF"></i><b>Песок</b><code>#E8D7BF</code><em>глаз, порог · 6,04 : 1 к силуэту</em></div>
+      <div><i style="background:#F7F2E8"></i><b>Слоновая кость</b><code>#F7F2E8</code><em>основной фон</em></div>
+      <div><i style="background:#FFFCF5"></i><b>Молоко</b><code>#FFFCF5</code><em>негатив · 8,31 : 1 к #3F5142</em></div>
+    </div>
+  </section>
+
+  <!-- G. Охранное поле -->
+  <section class="tile milk" style="grid-row: 4; grid-column: 1">
+    <span class="lbl">Охранное поле</span>
+    <div class="clear" id="clear">
+      <span class="lockup" role="img" aria-label="Бастет — дезинсекция · дератизация"><svg class="mk" viewBox="15.5 3.2 34 56.8" aria-hidden="true"><use href="#logo-bastet" width="64" height="64"/></svg><span class="wm"><b>Бастет</b><small>дезинсекция · дератизация</small></span></span>
+    </div>
+    <p class="note g-note">Поле вокруг локапа — не меньше <b>x</b>, высоты прописной «Б». Минимальный размер: локап — знак от 32 px в высоту, отдельный знак — 16 px (малая версия).</p>
+  </section>
+
+  <!-- H. Другие варианты -->
+  <section class="tile alts" style="grid-row: 5">
+    <span class="lbl">Другие варианты</span>
+    <div class="row">
+      <div class="alt">
+        <svg viewBox="0 0 64 64" aria-label="Вариант: сидящая Бастет в арке">
+          <path fill="#3F5142" d="M9 25 A23 23 0 0 1 55 25 L55 57 A3 3 0 0 1 52 60 L12 60 A3 3 0 0 1 9 57 Z"/>
+          <path fill="#FFFFFF" d="M30.76 6.28 L36.04 12.53 C38.06 12.09 39.76 13.11 40.88 14.46 L44.58 18.95 Q45.06 19.57 44.58 20.1 L43.52 21.15 C42.9 21.77 42.11 22.3 41.06 22.56 C39.74 22.91 38.86 23.97 38.86 25.64 C38.86 28.9 41.09 30.48 40.88 34.44 L40 50 A2 2 0 0 0 44 50 L44 43 A2 2 0 0 1 48 43 L48 50 A6 6 0 0 1 42 56 L27.24 56 A9.68 9.68 0 0 1 18.22 42.8 L28.47 16.58 Z"/>
+          <path fill="#3F5142" d="M35.51 15.96 Q38.42 14.9 40.53 17.28 Q37.71 18.51 35.51 15.96 Z"/>
+        </svg>
+        <div><b>Кошка в тёмной арке</b><p>Белый силуэт в шалфейной нише. Идея арки перешла в бейдж-фавикон — светлее и с порогом.</p></div>
+      </div>
+      <div class="alt">
+        <svg viewBox="0 0 64 64" aria-label="Вариант: щит-страж">
+          <path fill="#3F5142" d="M8 38L8 27.98A8 8 0 0 1 8.24 26.04L12.7 8.22A1.6 1.6 0 0 1 15.52 7.63L24.28 19.06A2.4 2.4 0 0 0 26.18 20L37.82 20A2.4 2.4 0 0 0 39.72 19.06L48.48 7.63A1.6 1.6 0 0 1 51.3 8.22L55.76 26.04A8 8 0 0 1 56 27.98L56 38C56 47.66 42.56 57.32 32 61C21.44 57.32 8 47.66 8 38Z"/>
+          <path fill="#E8D7BF" d="M14.11 35.78A8.75 8.75 0 0 1 27.89 38.22A8.75 8.75 0 0 1 14.11 35.78ZM36.11 38.22A8.75 8.75 0 0 1 49.89 35.78A8.75 8.75 0 0 1 36.11 38.22Z"/>
+          <path fill="#3F5142" d="M21 34.1A4.37 4.37 0 0 1 21 39.9A4.37 4.37 0 0 1 21 34.1ZM43 34.1A4.37 4.37 0 0 1 43 39.9A4.37 4.37 0 0 1 43 34.1Z"/>
+        </svg>
+        <div><b>Щит-страж</b><p>Кошачья голова в форме щита, миндалевидные глаза песком. Строже, но ближе к маскоту.</p></div>
+      </div>
+      <div class="alt">
+        <svg viewBox="0 0 64 64" aria-label="Вариант: монограмма Б">
+          <circle cx="32" cy="32" r="31" fill="#E8D7BF"/>
+          <path fill="#556B57" fill-rule="evenodd" d="M16.2 53.78L16.2 18.98L18.45 10.76Q18.81 9.42 19.72 10.47L27.08 18.98L36.65 18.98L44.01 10.47Q44.91 9.42 45.28 10.76L47.52 18.98L47.52 24.64L24.9 24.64L24.9 31.17L37.08 31.17A11.31 11.31 0 0 1 37.08 53.78ZM24.9 36.82L33.6 36.82A5.66 5.66 0 0 1 33.6 48.13L24.9 48.13Z"/>
+        </svg>
+        <div><b>Монограмма «Б»</b><p>Буква с кошачьими ушами на песочном диске. Лаконично, но без образа Бастет.</p></div>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="load-sprite.js"></script>
+<script>
+  /* Размечаем охранное поле: x = высота прописной «Б» в локапе (≈ 0,69 кегля Prata). */
+  (async function () {
+    await window.spriteReady; await document.fonts.ready;
+    var box = document.getElementById('clear');
+    var fs = parseFloat(getComputedStyle(box.querySelector('.lockup')).fontSize);
+    var x = Math.round(fs * 0.69);
+    box.style.padding = x + 'px';
+    var mk = function (css, t) { var s = document.createElement('span'); s.className = t ? 'x' : 'bar'; s.style.cssText = css; if (t) s.textContent = 'x'; box.appendChild(s); };
+    mk('left:0;top:0;bottom:0;width:' + x + 'px'); mk('right:0;top:0;bottom:0;width:' + x + 'px');
+    mk('left:' + x + 'px;right:' + x + 'px;top:0;height:' + x + 'px'); mk('left:' + x + 'px;right:' + x + 'px;bottom:0;height:' + x + 'px');
+    mk('left:' + (x / 2 - 3) + 'px;top:50%;margin-top:-5px', 1); mk('left:50%;top:' + (x / 2 - 5) + 'px', 1);
+  })();
+</script>
+</body>
+</html>

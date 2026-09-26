@@ -82,7 +82,7 @@ for (const width of widths) {
   await page.waitForTimeout(40);
   await sectionShot(page, '.request-section', `request-filled-${width}.png`, width);
   await sectionShot(page, '.contact-section', `contact-${width}.png`, width);
-  for (const name of ['process', 'control', 'documents']) {
+  for (const name of ['process', 'documents']) {
     await sectionShot(page, `.${name}-section`, `${name}-${width}.png`, width);
   }
   await page.close();

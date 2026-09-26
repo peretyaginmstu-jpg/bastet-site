@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Бастет — экспорт логотипа</title>
+<link rel="icon" href="../assets/icons/favicon.svg" type="image/svg+xml">
+<!-- PNG без фона (1600 × 1032, поле ≈ 8 % с каждой стороны):
+     node tools/render.mjs "http://127.0.0.1:8747/brand/logo-export.html?c=%23556B57" brand/logo-green.png 1600 1032 0 1 transparent
+     node tools/render.mjs "http://127.0.0.1:8747/brand/logo-export.html?c=%23FFFCF5" brand/logo-white.png 1600 1032 0 1 transparent -->
+<style>
+  html, body { margin: 0; width: 100vw; height: 100vh; background: transparent; }
+  body { display: grid; place-items: center; }
+  #logo { width: 84vw; height: calc(84vw * 109 / 169); }
+</style>
+</head>
+<body>
+<svg class="sprite" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden"></svg>
+<svg id="logo" role="img" aria-label="Бастет"><use href="#logo-bastet"/></svg>
+<script>document.getElementById('logo').style.color = new URLSearchParams(location.search).get('c') || '#556B57';</script>
+<script src="load-sprite.js"></script>
+</body>
+</html>

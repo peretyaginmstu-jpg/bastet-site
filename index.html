@@ -35,8 +35,8 @@
 <body>
 
 <svg class="icon-sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
-  <!-- Знак «Бастет» — финальный, из brand/sprite-symbols.txt (генератор brand/build-marks.py). Силуэт = currentColor, глаз = CSS-переменная logo-eye. -->
-  <symbol id="logo-bastet" viewBox="0 0 64 64"><path fill="currentColor" d="M29.4 3.2 L33.4 9.5 L35.5 7.1 C36.1 8 36.6 9.1 36.9 10.25 C39.4 10.3 41.1 11.5 42.2 12.9 L45.5 17.1 Q46.05 17.95 45.45 18.6 L44.25 19.8 C43.45 20.6 42.55 21.25 41.35 21.6 C39.85 22.05 38.95 23.35 38.95 25.25 C38.95 28.9 41.55 30.7 41.35 35.3 L40.5 53 A2 2 0 0 0 44.5 53 L44.5 49.1 A2.5 2.5 0 0 1 49.5 49.1 L49.5 53 A7 7 0 0 1 42.5 60 L26.5 60 A11 11 0 0 1 16.7 43.99 L25.9 26 C26.9 24 28.75 22 28.75 19.6 C28.75 17.4 26.5 16 26.5 13.2 C26.6 10.4 28.2 6.4 29.4 3.2 Z"/><path fill="var(--logo-eye, #E8D7BF)" style="fill:var(--logo-eye, #E8D7BF)" d="M35.1 14.6 Q38.35 13.35 40.8 16 Q37.6 17.5 35.1 14.6 Z"/></symbol>
+  <!-- Логотип заказчика «Бастет»: монограмма над надписью (brand/build-logo.py). -->
+  <symbol id="logo-bastet" viewBox="21 37 169 109"><g fill="none" stroke="currentColor" stroke-linejoin="miter" stroke-miterlimit="10"><path stroke-width="2.2" d="M120.7 39H81.1V91H120.5A9 9 0 0 0 129.5 82V79.8A9 9 0 0 0 120.5 70.8H81.1M99 39V91"/><path stroke-width="2.5" d="M37.1 122.4H23.5V143.6H33.1A4.5 4.5 0 0 0 37.6 139.1V136.4A4.5 4.5 0 0 0 33.1 131.9H23.5 M54.18 135.8H67.72 M102.40 123.96C100.64 122.84 98.26 122.30 95.20 122.30C87.60 122.30 84.15 125.64 84.15 133.00C84.15 140.36 87.60 143.70 95.20 143.70C98.26 143.70 100.64 143.16 102.40 142.04 M115 122.4H132M123.5 122.4V145 M160 122.4H145.8V143.6H160M145.8 132.4H158 M171 122.4H189M180 122.4V145"/></g><path fill="currentColor" d="M48.92 145.00L59.12 121.00L62.78 121.00L72.98 145.00L70.27 145.00L60.95 123.08L51.63 145.00Z"/></symbol>
   <symbol id="i-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h14.5"/><path d="M12.8 6.2 18.6 12l-5.8 5.8"/></symbol>
   <symbol id="i-caret-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m6.2 9.6 5.8 5.6 5.8-5.6"/></symbol>
   <symbol id="i-check-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.6"/><path d="m8.4 12.2 2.5 2.5 4.7-5.3"/></symbol>
@@ -150,7 +150,7 @@
     <div class="container nav-shell">
       <a class="brand" href="#top" aria-label="Бастет — на главную">
         <svg class="brand-mark" aria-hidden="true" focusable="false"><use href="#logo-bastet"/></svg>
-        <span><b>Бастет</b><small>дезинсекция · дератизация</small></span>
+        <span class="visually-hidden">Бастет</span>
       </a>
       <nav class="desktop-nav" aria-label="Основное меню">
         <a href="#services">Услуги</a>
@@ -277,7 +277,6 @@
             <i class="ic" aria-hidden="true"><svg aria-hidden="true" focusable="false"><use href="#i-caret-down"/></svg></i>
           </label>
           <button class="round-link round-link-dark" id="quickGo" type="button" aria-label="Показать подобранное решение"><span class="quick-go-label" aria-hidden="true">Показать подобранное решение</span><i class="ic" aria-hidden="true"><svg aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></i></button>
-          <svg class="quick-mark" aria-hidden="true" focusable="false"><use href="#logo-bastet"/></svg>
           <p class="quick-error" id="quickError" role="status" aria-live="polite"></p>
         </div>
       </div>
@@ -351,7 +350,7 @@
               <p class="panel-kicker">Дезинфекция</p>
               <h4>Уничтожение или предотвращение распространения инфекций</h4>
               <p>Профилактическая или заключительная дезинфекция методом орошения рабочего раствора в закрытом помещении или местах общего пользования. Вид препарата, концентрацию и время экспозиции подбираем по виду инфекции и степени её распространения.</p>
-              <ul><li>Профилактическая</li><li>Заключительная</li><li>Орошение рабочим раствором</li><li>Расчёт концентрации и экспозиции</li></ul>
+              <ul><li>Профилактическая (точечное орошение в местах риска заражения)</li><li>Заключительная (орошение генератором холодного тумана в закрытом пространстве)</li></ul>
             </div>
           </article>
         </div>
@@ -414,21 +413,6 @@
           <li><span><i class="ic" aria-hidden="true"><svg aria-hidden="true" focusable="false"><use href="#i-spray-bottle"/></svg></i><b aria-hidden="true">03</b></span><h3>Проведение обработки</h3><p>Выполняем согласованный комплекс мероприятий.</p></li>
           <li><span><i class="ic" aria-hidden="true"><svg aria-hidden="true" focusable="false"><use href="#i-check-circle"/></svg></i><b aria-hidden="true">04</b></span><h3>Контроль</h3><p>Оцениваем эффективность проведённых мероприятий.</p></li>
           <li><span><i class="ic" aria-hidden="true"><svg aria-hidden="true" focusable="false"><use href="#i-file-text"/></svg></i><b aria-hidden="true">05</b></span><h3>Отчётные документы</h3><p>Передаём предусмотренные акты.</p></li>
-        </ol>
-      </div>
-    </section>
-
-    <section class="section control-section" aria-labelledby="control-title">
-      <div class="container control-grid reveal">
-        <div>
-          <p class="section-label">Акарицидная обработка</p>
-          <h2 id="control-title">Контроль эффективности после обработки</h2>
-          <p>Флажирование показывает реальную заселённость территории: клещи цепляются за светлую ткань, протаскиваемую по траве.</p>
-        </div>
-        <ol class="control-timeline">
-          <li><b>День 0</b><strong>Обследование и&nbsp;обработка</strong><span>Оценка территории и проведение мероприятий.</span></li>
-          <li><b>3–5 день</b><strong>Первый контроль</strong><span>Повторное обследование методом флажирования.</span></li>
-          <li><b>15 день</b><strong>Повторный контроль</strong><span>Результат фиксируется в акте оценки эффективности.</span></li>
         </ol>
       </div>
     </section>
@@ -523,11 +507,10 @@
 
     <section class="section contact-section" id="contacts" aria-labelledby="contacts-title">
       <picture class="contact-photo">
-        <source type="image/avif" srcset="assets/images/contact-800.avif 800w, assets/images/contact.avif 1600w" sizes="(min-width: 1384px) 1320px, (max-width: 767px) 384px, calc(100vw - 64px)">
-        <source type="image/webp" srcset="assets/images/contact-800.webp 800w, assets/images/contact.webp 1600w" sizes="(min-width: 1384px) 1320px, (max-width: 767px) 384px, calc(100vw - 64px)">
-        <img src="assets/images/contact.jpg" srcset="assets/images/contact-800.jpg 800w, assets/images/contact.jpg 1600w" sizes="(min-width: 1384px) 1320px, (max-width: 767px) 384px, calc(100vw - 64px)" alt="Специалист готовит план обработки объекта" width="1600" height="1000" loading="lazy" decoding="async">
+        <source type="image/avif" srcset="assets/images/contact-800.avif 800w, assets/images/contact.avif 1600w" sizes="(min-width: 1384px) 628px, (min-width: 1024px) calc(50vw - 64px), (min-width: 768px) calc(100vw - 64px), calc(100vw - 32px)">
+        <source type="image/webp" srcset="assets/images/contact-800.webp 800w, assets/images/contact.webp 1600w" sizes="(min-width: 1384px) 628px, (min-width: 1024px) calc(50vw - 64px), (min-width: 768px) calc(100vw - 64px), calc(100vw - 32px)">
+        <img src="assets/images/contact.jpg" srcset="assets/images/contact-800.jpg 800w, assets/images/contact.jpg 1600w" sizes="(min-width: 1384px) 628px, (min-width: 1024px) calc(50vw - 64px), (min-width: 768px) calc(100vw - 64px), calc(100vw - 32px)" alt="Специалист готовит план обработки объекта" width="1600" height="1000" loading="lazy" decoding="async">
       </picture>
-      <div class="contact-shade" aria-hidden="true"></div>
       <div class="container contact-inner reveal">
         <div><p class="section-label">Связаться</p><h2 id="contacts-title">Обсудим ваш объект</h2><p>Ответим на звонок или письмо.</p></div>
         <div class="contact-links">
@@ -542,7 +525,7 @@
   <footer class="site-footer">
     <div class="container footer-main">
       <div class="footer-id">
-        <a class="brand footer-brand" href="#top" aria-label="Бастет — на главную"><svg class="brand-mark" aria-hidden="true" focusable="false"><use href="#logo-bastet"/></svg><span><b>Бастет</b><small>дезинсекция · дератизация</small></span></a>
+        <a class="brand footer-brand" href="#top" aria-label="Бастет — на главную"><svg class="brand-mark" aria-hidden="true" focusable="false"><use href="#logo-bastet"/></svg><span class="visually-hidden">Бастет</span></a>
         <p class="footer-owner">ИП Азиев Р. Р.</p>
       </div>
       <dl class="requisites">
@@ -581,7 +564,7 @@
     { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Дезинсекция", "description": "Уничтожение всех видов насекомых внутри и снаружи зданий и сооружений: орошение, фогация, ловушки и приманки, нанесение геля." } },
     { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Дератизация, пест-контроль", "description": "Уничтожение всех видов грызунов на территории, внутри и по периметру зданий: раскладка приманки, клеевые пластины и мышеловки, запенивание дыр, закладка приманки в норы." } },
     { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Акарицидная обработка", "description": "Уничтожение иксодовых клещей на территории с акарологическим обследованием методом флажирования и контролем эффективности на 3–5 и 15 день." } },
-    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Дезинфекция", "description": "Профилактическая и заключительная дезинфекция методом орошения рабочего раствора; концентрация и экспозиция подбираются по виду инфекции." } }
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Дезинфекция", "description": "Профилактическая дезинфекция — точечное орошение в местах риска заражения; заключительная — орошение генератором холодного тумана в закрытом пространстве." } }
   ]
 }
 </script>

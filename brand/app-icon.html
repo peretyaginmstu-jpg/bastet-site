@@ -4,14 +4,13 @@
 <meta charset="utf-8">
 <title>Бастет — иконка приложения</title>
 <link rel="icon" href="../assets/icons/favicon.svg" type="image/svg+xml">
-<!-- Рендер: node tools/render.mjs "http://127.0.0.1:8747/brand/app-icon.html?s=180" assets/icons/apple-touch-icon.png 180 180 0
-            node tools/render.mjs "http://127.0.0.1:8747/brand/app-icon.html?s=512" assets/icons/icon-512.png 512 512 0 -->
+<!-- Рендер: node tools/render.mjs http://127.0.0.1:8747/brand/app-icon.html assets/icons/apple-touch-icon.png 180 180 0
+            node tools/render.mjs http://127.0.0.1:8747/brand/app-icon.html assets/icons/icon-512.png 512 512 0
+     Квадрат без скругления: скругляет сама система (iOS, Android). -->
 <style>
-  html, body { margin: 0; width: 100vw; height: 100vh; overflow: hidden; background: #F7F2E8; }
-  /* видимая часть бейджа в сетке 64: x 4–60, y 1,6–61 (центр 32 / 31,3); высота бейджа — 72 % стороны */
-  img { position: absolute; left: 50%; top: 50%; width: calc(100vh * .72 * 64 / 59.4); height: auto;
-        transform: translate(-50%, calc(-50% + 100vh * .72 / 59.4 * .7)); }
+  html, body { margin: 0; width: 100vw; height: 100vh; overflow: hidden; background: #556B57; }
+  img { display: block; width: 100vw; height: 100vh; }
 </style>
 </head>
-<body><img src="bastet-badge.svg" alt="Бастет"></body>
+<body><img src="bastet-app-icon.svg" alt="Бастет"></body>
 </html>

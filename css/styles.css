@@ -80,9 +80,9 @@ main:focus { outline: none; }
 .section-label::before, .eyebrow::before, .panel-kicker::before { flex: 0 0 28px; height: 1px; background: var(--ochre-ink); content: ""; }
 .section-label-dark { color: var(--sage-dark); }
 /* На тонированных панелях рубрики темнее: контраст ≥7:1 вместо 4.8. */
-.request-section .section-label, .license-panel .section-label, .control-grid .section-label, .picker-result .panel-kicker { color: var(--sage-dark); }
+.request-section .section-label, .license-panel .section-label, .picker-result .panel-kicker { color: var(--sage-dark); }
 .section-heading, .request-heading { display: grid; margin-bottom: 52px; grid-template-columns: minmax(0, 1.6fr) minmax(0, .8fr); gap: 64px; align-items: end; }
-.section-heading h2, .request-heading h2, .system-copy > h2, .documents-panel h2, .license-copy h2, .control-grid h2, .contact-inner h2 { font-size: clamp(34px, 3.2vw, 46px); line-height: 1.1; }
+.section-heading h2, .request-heading h2, .system-copy > h2, .documents-panel h2, .license-copy h2, .contact-inner h2 { font-size: clamp(34px, 3.2vw, 46px); line-height: 1.1; }
 .section-heading > p, .request-heading > p { max-width: 400px; margin: 0 0 6px; color: var(--muted); line-height: 1.65; }
 
 /* --- Кнопки: одна тёмная таблетка на экран, остальное — контур ----------- */
@@ -103,18 +103,15 @@ main:focus { outline: none; }
 .round-link-dark { border-color: var(--sage-dark); background: var(--sage-dark); color: var(--milk); }
 .round-link-dark:hover { border-color: var(--ink); background: var(--ink); }
 
-/* --- Шапка: знак + «Бастет» (Prata) + дескриптор ------------------------- */
+/* --- Шапка: логотип заказчика — монограмма «Б» над надписью «БАСТЕТ» ------ */
 .site-header { position: sticky; z-index: 100; top: 0; border-bottom: 1px solid var(--line); background: var(--ivory); transition: background-color var(--fast), border-color var(--fast); }
 .site-header.scrolled { background: var(--milk); border-bottom-color: var(--line-strong); }
 .nav-shell { display: grid; min-height: 84px; grid-template-columns: auto minmax(0, 1fr) auto auto; align-items: center; gap: 28px; }
-.brand { display: inline-flex; min-width: 0; justify-self: start; align-items: center; gap: 10px; color: var(--ink); }
-/* Финальный знак (brand/sprite-symbols.txt): в квадрате 64 силуэт занимает x 15,5–49,5, y 3,2–60.
-   Отрицательные поля ставят спину по краю контейнера и держат грудь ≈ .5em от «Б»;
-   основание знака стоит на базовой линии дескриптора (align-items: center + размеры ниже). */
-.brand-mark { flex: 0 0 auto; width: 46px; height: 46px; margin: 0 -11px 0 -11px; color: var(--sage-dark); }
-.brand span { display: flex; min-width: 0; flex-direction: column; }
-.brand b { font-family: var(--serif); font-size: 26px; font-weight: 400; line-height: 1.05; letter-spacing: .01em; }
-.brand small { margin-top: 5px; color: var(--sage-deep); font-size: 10.5px; font-weight: 600; letter-spacing: .15em; line-height: 1.2; text-transform: uppercase; white-space: nowrap; }
+.brand { display: inline-flex; min-width: 0; justify-self: start; align-items: center; color: var(--sage-deep); }
+/* Логотип (brand/build-logo.py, символ #logo-bastet, viewBox 169 × 109): зелёный --sage-deep,
+   как вторая строка заголовка. Ширина и высота — в пропорции символа 169 : 109. */
+.brand-mark { flex: 0 0 auto; width: 93px; height: 60px; color: var(--sage-deep); }
+.footer-brand .brand-mark { width: 112px; height: 72px; }
 .desktop-nav { display: flex; justify-content: center; gap: clamp(16px, 1.8vw, 30px); }
 .desktop-nav a, .footer-nav a { position: relative; display: inline-flex; min-height: 44px; align-items: center; color: var(--muted); font-size: 14px; font-weight: 500; white-space: nowrap; transition: color var(--fast); }
 .desktop-nav a::after { position: absolute; left: 0; right: 0; bottom: 9px; height: 1px; background: var(--ochre-ink); transform: scaleX(0); transform-origin: left; transition: transform var(--control) var(--ease); content: ""; }
@@ -197,7 +194,6 @@ main:focus { outline: none; }
 /* Единственная водяная кошка на странице — тот же символ, что и логотип, 5%.
    Встаёт сразу за заголовком: у h2 max-width 300px, поэтому left = отступ 36 + 300 — текст
    её не касается. На 1181–1279 места до первого поля нет — кошку не ставим (SYNTHESIS, п. 4). */
-.quick-mark { position: absolute; z-index: -1; left: 336px; bottom: 12px; width: 128px; height: 128px; color: var(--sage-dark); opacity: .05; pointer-events: none; --logo-eye: currentColor; }
 .quick-field { position: relative; display: grid; min-width: 0; min-height: 84px; padding: 14px 42px 14px 14px; border: 1px solid var(--sage-deep); border-radius: var(--radius-md); grid-template-columns: 36px minmax(0, 1fr); align-items: center; gap: 14px; background: var(--milk); cursor: pointer; transition: border-color var(--fast), background-color var(--fast); }
 .quick-field:hover { border-color: var(--sage-dark); background: var(--white); }
 .quick-field:focus-within { outline: 3px solid var(--sage-dark); outline-offset: 3px; }
@@ -230,6 +226,8 @@ main:focus { outline: none; }
 .service-card-detail h4 { max-width: 640px; font-family: var(--serif); font-size: clamp(24px, 2.3vw, 32px); font-weight: 400; line-height: 1.22; }
 .service-card-detail > p:not(.panel-kicker) { max-width: 640px; margin: 18px 0 0; color: var(--muted); line-height: 1.65; }
 .service-card-detail ul { display: grid; max-width: 640px; padding: 0; margin: 24px 0 0; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 28px; border-top: 1px solid var(--line); list-style: none; }
+/* У дезинфекции две длинные приписки — по одной в строку, без переноса в узкой колонке. */
+.service-card[data-service="disinfection"] .service-card-detail ul { max-width: 720px; grid-template-columns: 1fr; }
 .service-card-detail li { position: relative; padding: 11px 0 11px 18px; border-bottom: 1px solid var(--line); color: var(--ink); font-size: 14.5px; line-height: 1.45; }
 .service-card-detail li::before, .compact-list li::before, .clients-copy li::before, .legal-content li::before { position: absolute; left: 1px; top: 19px; width: 5px; height: 5px; background: var(--sage-deep); transform: rotate(45deg); content: ""; }
 /* «Дезинсекция» (раскрыта по умолчанию): в мастере 1200×900 шапочка стоит у самого верхнего
@@ -282,18 +280,6 @@ main:focus { outline: none; }
 .process-list h3 { display: flex; min-height: 2.5em; margin-top: auto; align-items: flex-end; justify-content: center; font-family: var(--serif); font-size: 20px; font-weight: 400; line-height: 1.25; }
 .process-list p { min-height: calc(2 * 1.55em); max-width: 220px; margin: 10px 0 0; color: var(--muted-deep); font-size: 14px; line-height: 1.55; }
 
-/* --- Контроль эффективности: песочная панель, дни — Inter tabular -------- */
-.control-section { padding-top: 0; }
-.control-grid { display: grid; padding: 52px; border-radius: var(--radius-lg); grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 64px; align-items: start; background: var(--sand-soft); }
-.control-grid h2 { font-size: clamp(32px, 3.2vw, 46px); }
-.control-grid > div > p:last-child { margin: 22px 0 0; color: var(--muted-deep); }
-.control-timeline { padding: 0; margin: 0; list-style: none; }
-.control-timeline li { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 6px 24px; padding: 22px 0; border-top: 1px solid var(--line-strong); }
-.control-timeline li:first-child { padding-top: 0; border-top: 0; }
-.control-timeline li:last-child { padding-bottom: 0; }
-.control-timeline b { display: inline-flex; grid-column: 1; grid-row: 1 / span 2; min-height: 30px; padding: 3px 12px; align-self: start; justify-self: start; align-items: center; border: 1px solid var(--sand-line); border-radius: 999px; background: var(--milk); color: var(--ochre-ink); font-size: 13px; font-weight: 600; line-height: 1.3; white-space: nowrap; font-variant-numeric: tabular-nums; }
-.control-timeline strong { grid-column: 2; font-family: var(--serif); font-size: 20px; font-weight: 400; line-height: 1.3; }
-.control-timeline span { grid-column: 2; color: var(--muted-deep); font-size: 14.5px; }
 
 /* --- Документы: арочные ниши и волосяные линии --------------------------- */
 /* У раздела нет верхнего отступа (он продолжает «Контроль»): после перехода по якорю
@@ -371,9 +357,9 @@ main:focus { outline: none; }
 
 /* --- Контакты: широкий кадр, затем открытые действия ---------------------- */
 .contact-section { display: grid; width: min(calc(100% - var(--gutter) * 2), var(--container)); padding-block: var(--section-space); margin-inline: auto; gap: 48px; }
-.contact-photo { width: 100%; height: 380px; overflow: hidden; border-radius: var(--radius-lg); background: var(--sand); }
-.contact-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 8%; }
-.contact-shade { display: none; }
+/* Кадр целиком, в родных пропорциях 16:10: специалист, план объекта на столе, опрыскиватель. */
+.contact-photo { width: 100%; aspect-ratio: 16 / 10; overflow: hidden; border-radius: var(--radius-lg); background: var(--sand); }
+.contact-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
 .contact-inner { display: grid; width: 100%; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px 64px; align-items: start; }
 .contact-inner > div:first-child { grid-column: 1; grid-row: 1; }
 .contact-inner > div:first-child > p:last-child { max-width: 420px; margin: 22px 0 0; color: var(--muted); }
@@ -387,6 +373,12 @@ main:focus { outline: none; }
 .contact-links b { font-size: clamp(19px, 2vw, 26px); font-weight: 500; line-height: 1.25; letter-spacing: -.01em; overflow-wrap: anywhere; }
 .contact-links a[href^="tel:"] b { font-variant-numeric: tabular-nums; }
 .contact-links small { margin-top: 4px; color: var(--muted); font-size: 12.5px; line-height: 1.4; }
+/* Десктоп: фото слева (специалист смотрит на текст), контакты справа одной колонкой. */
+@media (min-width: 1024px) {
+  .contact-section { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 64px; align-items: center; }
+  .contact-inner { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .contact-inner > div:first-child, .contact-links, .contact-inner > .btn { grid-column: 1; grid-row: auto; }
+}
 
 /* --- Подвал -------------------------------------------------------------- */
 .site-footer { border-top: 1px solid var(--line-strong); background: var(--milk); }
@@ -494,10 +486,6 @@ main:focus { outline: none; }
   .process-list li:nth-child(3) { min-height: 356px; }
   .process-list li:nth-child(4) { min-height: 376px; }
   .process-list li:nth-child(5) { min-height: 396px; }
-  .quick-mark { bottom: 16px; width: 96px; height: 96px; }
-}
-@media (min-width: 1181px) and (max-width: 1279px) {
-  .quick-mark { display: none; }
 }
 
 @media (max-width: 1180px) {
@@ -524,7 +512,6 @@ main:focus { outline: none; }
   .quick-panel > div:first-child { grid-column: 1 / -1; display: flex; align-items: center; gap: 28px; }
   .quick-panel .section-label { margin: 0; }
   .quick-panel h2 { max-width: none; font-size: 28px; }
-  .quick-mark { left: auto; right: 36px; top: 8px; bottom: auto; width: 86px; height: 86px; }
   .section-heading, .request-heading { gap: 40px; }
   .service-card { grid-template-columns: 56px minmax(0, 300px) minmax(0, 1fr) 52px; column-gap: 32px; }
   .service-card-copy { grid-template-columns: 56px minmax(0, 1fr); column-gap: 32px; }
@@ -540,7 +527,7 @@ main:focus { outline: none; }
   .process-list li:nth-child(5) { min-height: 400px; }
   .process-list p { min-height: calc(4 * 1.55em); }
   .request-form, .picker-result { padding: 36px; }
-  .control-grid, .license-panel { padding: 40px; gap: 40px; }
+  .license-panel { padding: 40px; gap: 40px; }
   .clients-copy { padding-left: 40px; }
   .footer-main { grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); }
   .footer-nav { grid-column: 1 / -1; grid-template-columns: repeat(4, max-content); margin-top: 0; }
@@ -569,6 +556,7 @@ main:focus { outline: none; }
 @media (min-width: 1024px) and (max-height: 820px) {
   :root { --anchor-offset: 73px; }
   .nav-shell { min-height: 72px; }
+  .site-header .brand-mark { width: 81px; height: 52px; }
   .hero { padding-top: 12px; }
   /* Арка стоит на цоколе и растёт вверх до верха строки; её контур выше арки на шаг —
      укорачиваем арку, чтобы вершина контура не уходила под линию шапки (зазор 10 px). */
@@ -613,7 +601,6 @@ main:focus { outline: none; }
   .hero-visual img { object-position: 76% 50%; }
   .quick-panel > div:first-child { display: block; }
   .quick-panel .section-label { margin-bottom: 10px; }
-  .quick-mark { top: 20px; width: 96px; height: 96px; }
   .proof-item { padding: 22px 18px; flex-direction: column; align-items: flex-start; gap: 12px; }
   .proof-item:first-child { padding-left: 0; }
   .proof-item b { font-size: 18px; }
@@ -642,7 +629,7 @@ main:focus { outline: none; }
   .process-list li > span { margin-bottom: 0; }
   .process-list h3 { display: block; min-height: 0; margin-top: 6px; font-size: 21px; }
   .process-list p { min-height: 0; max-width: none; margin-top: 6px; font-size: 15px; }
-  .control-grid, .license-panel { grid-template-columns: 1fr; gap: 32px; }
+  .license-panel { grid-template-columns: 1fr; gap: 32px; }
   .documents-panel { gap: 0 28px; }
   .documents-panel article { grid-template-columns: 1fr; gap: 18px; }
   .documents-panel h3 { font-size: 21px; }
@@ -652,7 +639,6 @@ main:focus { outline: none; }
   .picker-result { min-height: 360px; border-left: 0; border-top: 1px solid var(--line); }
   .picker-result.has-results { min-height: 0; }
   .picker-result h3 { max-width: 500px; }
-  .contact-photo { height: 320px; }
   .contact-inner { gap: 24px 40px; }
 }
 
@@ -662,9 +648,8 @@ main:focus { outline: none; }
   .nav-shell { min-height: 68px; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; }
   .header-phone, .header-cta { display: none; }
   .brand { min-height: 44px; }
-  .brand-mark { position: relative; top: -1px; width: 40px; height: 40px; margin: 0 -10px 0 -10px; }
-  .brand b { font-size: 23px; }
-  .brand small { margin-top: 4px; font-size: 10.5px; letter-spacing: .1em; }
+  .brand-mark { width: 74px; height: 48px; }
+  .footer-brand .brand-mark { width: 99px; height: 64px; }
   .mobile-menu { left: var(--gutter); width: auto; padding-inline: 18px; }
   .no-js .nav-shell, .legal-page .nav-shell { grid-template-columns: 1fr; padding-block: 12px; gap: 4px; }
   .no-js .desktop-nav, .legal-page .desktop-nav { justify-content: flex-start; gap: 0 18px; }
@@ -712,9 +697,8 @@ main:focus { outline: none; }
   .quick-panel > .round-link { grid-column: 1 / -1; width: 100%; height: auto; min-height: 56px; padding: 8px 8px 8px 18px; justify-content: space-between; gap: 10px; border-radius: 999px; font-size: 14px; font-weight: 600; line-height: 1.25; text-align: left; }
   .quick-panel > .round-link .ic { width: 40px; height: 40px; padding: 10px; border-radius: 50%; background: var(--sage); color: var(--sage-dark); }
   .quick-go-label { display: inline; }
-  .quick-mark { right: 14px; top: 14px; width: 84px; height: 84px; }
   .section-heading, .request-heading { margin-bottom: 32px; gap: 16px; }
-  .section-heading h2, .request-heading h2, .system-copy > h2, .documents-panel h2, .license-copy h2, .control-grid h2, .contact-inner h2 { font-size: 33px; }
+  .section-heading h2, .request-heading h2, .system-copy > h2, .documents-panel h2, .license-copy h2, .contact-inner h2 { font-size: 33px; }
   .section-heading > p, .request-heading > p { font-size: 15px; }
   .service-card { grid-template-columns: minmax(0, 1fr) 46px; grid-template-areas: "title action" "media media" "detail detail"; column-gap: 12px; }
   .no-js .service-card { grid-template-areas: "title title" "media media" "detail detail"; }
@@ -744,12 +728,6 @@ main:focus { outline: none; }
   .process-list li > span b { font-size: 17px; }
   .process-list h3 { margin-top: 4px; font-size: 20px; }
   .process-list p { font-size: 14.5px; }
-  .control-grid { padding: 28px 20px; border-radius: var(--radius-md); gap: 28px; }
-  .control-timeline li { grid-template-columns: 1fr; gap: 8px; padding-block: 20px; }
-  .control-timeline b { grid-row: auto; }
-  .control-timeline strong, .control-timeline span { grid-column: 1; }
-  .control-timeline strong { font-size: 19px; }
-  .control-timeline span { font-size: 14px; }
   .documents-panel { grid-template-columns: 1fr; gap: 0; }
   .documents-panel > div { padding-bottom: 28px; }
   .documents-panel article { padding: 22px 0; grid-template-columns: 44px minmax(0, 1fr); gap: 16px; }
@@ -768,8 +746,7 @@ main:focus { outline: none; }
   .form-actions { display: grid; grid-template-columns: 1fr; }
   .picker-result h3 { font-size: 27px; }
   .contact-section { gap: 32px; }
-  .contact-photo { height: 240px; border-radius: var(--radius-md); }
-  .contact-photo img { object-position: 60% center; }
+  .contact-photo { border-radius: var(--radius-md); }
   .contact-inner { grid-template-columns: 1fr; gap: 28px; }
   .contact-inner > div:first-child, .contact-links, .contact-inner > .btn { grid-column: 1; grid-row: auto; }
   .contact-inner > .btn { justify-self: stretch; justify-content: space-between; }
@@ -799,18 +776,15 @@ main:focus { outline: none; }
   .object-list li::before { top: 8.5px; }
 }
 /* 360×800 (самый частый Android): H1 в четыре строки вместо шести, вводная фраза в три строки —
-   низ поля цены ≤ 800 px. Водяная кошка на панели подбора уходила под строку заголовка —
-   на узких экранах её нет (SYNTHESIS, п. 4: «если мешает — не ставить»). */
+   низ поля цены ≤ 800 px. */
 @media (max-width: 374px) {
   .hero h1 { font-size: 26px; }
   .hero-lead { font-size: 14px; }
-  .quick-mark { display: none; }
   /* Подсказка «Например: склад 800 м², Москва» целиком (кегль ввода остаётся 16 px). */
   .field input::placeholder, .field textarea::placeholder { font-size: 15px; }
 }
 
 @media (max-width: 359px) {
-  .brand small { letter-spacing: .08em; }
   .object-list li { font-size: 13px; }
   /* Подсказка поля «Адрес или площадь» целиком: поле чуть шире внутри, кегль подсказок
      13.5 px (кегль ввода остаётся 16 px — без автоувеличения в iOS). */
@@ -820,7 +794,7 @@ main:focus { outline: none; }
   .hero-actions .btn .ic { width: 40px; height: 40px; padding: 10px; }
   .license-line { font-size: 11px; letter-spacing: -.005em; }
   .quick-panel h2 { font-size: 24px; }
-  .section-heading h2, .request-heading h2, .system-copy > h2, .documents-panel h2, .license-copy h2, .control-grid h2, .contact-inner h2 { font-size: 29px; }
+  .section-heading h2, .request-heading h2, .system-copy > h2, .documents-panel h2, .license-copy h2, .contact-inner h2 { font-size: 29px; }
   .service-card-copy h3 { font-size: 22px; }
   .request-form, .picker-result { padding-inline: 16px; }
   .contact-links b { font-size: 18px; }
@@ -835,7 +809,7 @@ main:focus { outline: none; }
   .step-number { border: 1px solid CanvasText; }
   .service-card.is-open .service-more, .menu-button[aria-expanded="true"] { border: 2px solid Highlight; }
   .object-list li::before, .service-card-detail li::before, .compact-list li::before, .clients-copy li::before, .legal-content li::before { background: CanvasText; }
-  .price-note, .license-line, .license-number, .quick-field, .control-grid, .license-panel, .quick-panel { border: 1px solid CanvasText; }
+  .price-note, .license-line, .license-number, .quick-field, .license-panel, .quick-panel { border: 1px solid CanvasText; }
 }
 
 @media (prefers-reduced-motion: reduce) {
