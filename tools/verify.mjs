@@ -36,8 +36,14 @@ await page.goto(BASE + '/', { waitUntil: 'networkidle' });
 /* --- 0. Правки заказчика (25.09.2026) --- */
 const client = await page.evaluate(() => ({
   html: document.documentElement.outerHTML,
-  /* Подзаголовок заказчика: вводная фраза + перечень объектов списком (слова дословно). */
-  lead: [document.querySelector('.hero-lead')?.textContent.trim(), [...document.querySelectorAll('.hero .object-list li')].map((li) => li.textContent.trim()).join(', ')].filter(Boolean).join(' ') + (document.querySelector('.hero .object-list li') ? '.' : ''),
+  /* Текст заказчика дословно: фраза в hero («Оказание услуг … обработке») + подпись полосы
+     («На следующих типах объектов:») + перечень объектов списком. */
+  lead: (() => {
+    const lead = document.querySelector('.hero-lead')?.textContent.replace(/\s+/g, ' ').trim() || '';
+    const intro = document.querySelector('.object-band .section-label')?.textContent.trim() || '';
+    const items = [...document.querySelectorAll('.object-band .object-list li')].map((li) => li.textContent.replace(/\s+/g, ' ').trim());
+    return [lead, intro.charAt(0).toLowerCase() + intro.slice(1), items.join(', ')].filter(Boolean).join(' ') + (items.length ? '.' : '');
+  })(),
   price: document.querySelector('.price-note')?.textContent.replace(/\s+/g, ' ').trim(),
   title: document.title,
   brand: document.querySelector('.site-header .brand')?.textContent,

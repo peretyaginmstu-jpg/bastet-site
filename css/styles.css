@@ -76,8 +76,8 @@ main:focus { outline: none; }
 .section { padding-block: var(--section-space); }
 
 /* --- Рубрики: короткая охристая черта + капитель. Номеров разделов нет. ---- */
-.section-label, .eyebrow, .panel-kicker { display: flex; margin: 0 0 20px; align-items: center; gap: 14px; color: var(--sage-deep); font-size: 11px; font-weight: 600; letter-spacing: .16em; line-height: 1.45; text-transform: uppercase; }
-.section-label::before, .eyebrow::before, .panel-kicker::before { flex: 0 0 28px; height: 1px; background: var(--ochre-ink); content: ""; }
+.section-label, .panel-kicker { display: flex; margin: 0 0 20px; align-items: center; gap: 14px; color: var(--sage-deep); font-size: 11px; font-weight: 600; letter-spacing: .16em; line-height: 1.45; text-transform: uppercase; }
+.section-label::before, .panel-kicker::before { flex: 0 0 28px; height: 1px; background: var(--ochre-ink); content: ""; }
 .section-label-dark { color: var(--sage-dark); }
 /* На тонированных панелях рубрики темнее: контраст ≥7:1 вместо 4.8. */
 .request-section .section-label, .license-panel .section-label, .picker-result .panel-kicker { color: var(--sage-dark); }
@@ -136,33 +136,19 @@ main:focus { outline: none; }
 
 /* --- Hero: текст слева, фото в арке-портале на цоколе справа -------------- */
 .hero { padding: 40px 0 0; }
-.hero-card { display: grid; grid-template-columns: minmax(0, 7.4fr) minmax(0, 4.6fr); gap: 64px; align-items: stretch; }
-.hero-copy { min-width: 0; padding-bottom: 34px; }
-.hero .eyebrow { margin-bottom: 22px; }
+/* Первый экран без перегруза: заголовок, одна фраза заказчика, действия и цена.
+   Высоту задаёт арка (от окна, 480–660 px), текст стоит по центру её высоты. */
+.hero-card { display: grid; min-height: clamp(480px, calc(100svh - 260px), 660px); grid-template-columns: minmax(0, 7.4fr) minmax(0, 4.6fr); gap: 64px; align-items: stretch; }
+.hero-copy { min-width: 0; padding-block: 24px 40px; align-self: center; }
 .hero h1 { max-width: 800px; font-size: clamp(40px, 3.6vw, 52px); line-height: 1.1; letter-spacing: -.012em; }
 .hero h1 span { color: var(--sage-deep); }
-.hero-lead { max-width: 700px; margin: 22px 0 0; color: var(--ink); font-size: 17px; line-height: 1.55; text-wrap: pretty; }
-/* 12 типов объектов — отдельное поле; колонки собираются сами:
-   пищевые объекты / помещения / территория. Маркер — шалфейный ромб.
-   Пункты в одну строку (nowrap): ряды колонок одной высоты, без пустых полос;
-   колонки 1fr не уже самого длинного пункта. Ширины проверены для 768–1440+.
-   Линии рядов идут через всё поле, как в таблице: пункты не последней колонки заходят
-   в межколоночный зазор (отрицательное поле = зазору, вклад в ширину колонки прежний),
-   поэтому разная ширина колонок не даёт линий разной длины. */
-.object-list { --ol-gap: 24px; display: grid; max-width: 800px; margin: 14px 0 0; padding: 4px 22px; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(4, auto); grid-auto-flow: column; column-gap: var(--ol-gap); border: 1px solid var(--sand-line); border-radius: var(--radius-md); background: var(--milk); list-style: none; }
-.object-list li { position: relative; padding: 8px 0 8px 15px; border-top: 1px solid var(--line); font-size: 14px; line-height: 1.4; white-space: nowrap; }
-.object-list li:nth-child(-n+8) { margin-right: calc(var(--ol-gap) * -1); padding-right: var(--ol-gap); }
-.object-list li:nth-child(4n+1) { border-top: 0; }
-.object-list li::before { position: absolute; left: 1px; top: 15px; width: 5px; height: 5px; background: var(--sage-deep); transform: rotate(45deg); content: ""; }
-.hero-actions { display: flex; margin-top: 24px; align-items: center; gap: 12px; }
-/* Поле цены — «этикетка»: песок заметно темнее фона, тонкая внутренняя рамка, ниша с ярлыком. */
-.price-note { position: relative; display: grid; max-width: 800px; margin: 18px 0 0; padding: 16px 24px 16px 16px; grid-template-columns: 46px minmax(0, 1fr); gap: 18px; align-items: center; border-radius: var(--radius-md); background: var(--sand); color: var(--ink); font-size: 15px; line-height: 1.5; }
-.price-note::before { position: absolute; inset: 5px; border: 1px solid rgba(122, 95, 63, .24); border-radius: 13px; pointer-events: none; content: ""; }
-.price-note > .ic { width: 46px; height: 56px; padding: 18px 12px 12px; border-radius: 23px 23px 6px 6px; background: var(--milk); color: var(--sage-dark); }
+.hero-lead { max-width: 600px; margin: 24px 0 0; color: var(--ink); font-size: 18px; line-height: 1.55; text-wrap: pretty; }
+.hero-actions { display: flex; margin-top: 32px; align-items: center; gap: 12px; }
+/* Цена — компактная строка-«этикетка»: ярлык в арочной нише, текст дословно. */
+.price-note { display: flex; width: fit-content; max-width: 600px; margin: 20px 0 0; padding: 10px 20px 10px 10px; align-items: center; gap: 14px; border: 1px solid var(--sand-line); border-radius: var(--radius-md); background: var(--sand-soft); color: var(--ink); font-size: 15px; line-height: 1.45; }
+.price-note > .ic { flex: 0 0 auto; width: 38px; height: 46px; padding: 15px 10px 9px; border-radius: 19px 19px 5px 5px; background: var(--milk); color: var(--sage-dark); }
 .price-note > span { text-wrap: pretty; }
-.price-note b { display: block; margin-bottom: 2px; font-family: var(--serif); font-size: 24px; font-weight: 400; line-height: 1.2; letter-spacing: -.005em; }
-.license-line { display: flex; width: fit-content; max-width: 100%; margin: 16px 0 0; padding: 6px 14px 6px 10px; align-items: center; gap: 8px; border: 1px solid var(--line-strong); border-radius: 999px; color: var(--ink); font-size: 13px; font-weight: 500; line-height: 1.4; font-variant-numeric: tabular-nums; }
-.license-line .ic { font-size: 18px; color: var(--sage-deep); }
+.price-note b { font-weight: 600; }
 
 /* Арка: радиус 999px браузер сводит ровно к половине ширины — полукруг при любой
    высоте. Контур концентричен арке (равный зазор сверху и по бокам), цоколь шире арки.
@@ -182,6 +168,13 @@ main:focus { outline: none; }
 .proof-item > span { display: flex; min-width: 0; flex-direction: column; }
 .proof-item b { font-family: var(--serif); font-size: 19px; font-weight: 400; line-height: 1.25; }
 .proof-item small { margin-top: 4px; color: var(--muted); font-size: 13px; line-height: 1.45; font-variant-numeric: tabular-nums; }
+
+/* --- Типы объектов: продолжение фразы заказчика из hero, полоса под «полом» арки --- */
+.object-band { padding: 28px 0 0; }
+.object-band .section-label { margin-bottom: 14px; }
+.object-list { display: flex; margin: 0; padding: 0; flex-wrap: wrap; gap: 10px 30px; list-style: none; }
+.object-list li { position: relative; padding-left: 15px; color: var(--ink); font-size: 15.5px; line-height: 1.45; white-space: nowrap; }
+.object-list li::before { position: absolute; left: 0; top: 9px; width: 5px; height: 5px; background: var(--sage-deep); transform: rotate(45deg); content: ""; }
 
 /* --- Быстрый подбор: шалфейная панель, светлые поля, шаг в круге ---------- */
 .quick-section { padding-top: 44px; }
@@ -454,29 +447,13 @@ main:focus { outline: none; }
 /* ==========================================================================
    Адаптив
    ========================================================================== */
-/* Ноутбуки 1024–1439 (1366×768, 1280×720, 1024×768): первый экран плотнее, чтобы
-   CTA и поле цены вошли в окно. Порядок DOM не меняется. */
+/* Ноутбуки 1024–1439 (1366×768, 1280×720, 1024×768): первый экран чуть плотнее. */
 @media (max-width: 1439px) {
   .hero { padding-top: 24px; }
-  .hero .eyebrow { margin-bottom: 14px; }
-  .hero-lead { margin-top: 14px; }
-  .object-list { --ol-gap: 16px; margin-top: 12px; padding-inline: 18px; }
-  .object-list li { padding-block: 6px; font-size: 13.5px; }
-  .object-list li::before { top: 13px; }
-  .hero-actions { margin-top: 18px; }
-  .price-note { margin-top: 14px; padding-block: 12px; }
-  .license-line { margin-top: 12px; }
+  .hero-lead { margin-top: 20px; }
+  .hero-actions { margin-top: 26px; }
 }
 
-/* 1181–1365: три колонки перечня в одну строку помещаются, только если колонка текста шире —
-   арка чуть уже (7.9 / 4.1 вместо 7.4 / 4.6). */
-@media (min-width: 1181px) and (max-width: 1365px) {
-  .hero-card { grid-template-columns: minmax(0, 7.9fr) minmax(0, 4.1fr); gap: 48px; }
-  .hero-visual { --arch-w: calc((100vw - 64px - 48px) * .342 - 56px); }
-}
-@media (min-width: 1181px) and (max-width: 1279px) {
-  .object-list li { font-size: 13px; }
-}
 @media (min-width: 1181px) and (max-width: 1365px) {
   /* Описание в три строки поднимает заголовок — арки выше на 20 px, чтобы номер «01»
      не касался заголовка в самой низкой арке. */
@@ -498,16 +475,11 @@ main:focus { outline: none; }
   .mobile-menu { left: auto; width: min(380px, calc(100% - var(--gutter) * 2)); }
   /* Колонка текста шире (арка уже): H1 на 1024–1180 идёт в три строки. */
   .hero-card { grid-template-columns: minmax(0, 7.9fr) minmax(0, 4.1fr); gap: 48px; }
-  /* Арка идёт от рубрики до цоколя: без ограничения высоты она не проваливается вниз
+  /* Арка идёт на всю высоту первого экрана: без ограничения высоты она не проваливается вниз
      и не оставляет пустой угол справа от H1 (колонка узкая — арка читается как портал). */
   .hero-visual { max-height: none; }
   .hero { padding-top: 20px; }
-  .hero .eyebrow { margin-bottom: 12px; }
   .hero h1 { font-size: clamp(38px, 4vw, 46px); line-height: 1.08; }
-  .object-list { margin-top: 10px; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(6, auto); }
-  .object-list li:nth-child(4n+1) { border-top: 1px solid var(--line); }
-  .object-list li:nth-child(6n+1) { border-top: 0; }
-  .object-list li:nth-child(n+7) { margin-right: 0; padding-right: 0; }
   .quick-panel { grid-template-columns: minmax(0, 1fr) 22px minmax(0, 1fr) 58px; gap: 16px; }
   .quick-panel > div:first-child { grid-column: 1 / -1; display: flex; align-items: center; gap: 28px; }
   .quick-panel .section-label { margin: 0; }
@@ -561,41 +533,29 @@ main:focus { outline: none; }
   /* Арка стоит на цоколе и растёт вверх до верха строки; её контур выше арки на шаг —
      укорачиваем арку, чтобы вершина контура не уходила под линию шапки (зазор 10 px). */
   .hero-visual { height: calc(100% - 12px); }
-  .hero .eyebrow { margin-bottom: 10px; }
   .hero h1 { font-size: clamp(38px, 3.3vw, 46px); line-height: 1.08; }
-  .hero-lead { margin-top: 10px; }
-  .object-list { margin-top: 10px; }
-  .object-list li { padding-block: 4px; }
-  .object-list li::before { top: 11px; }
-  .hero-actions { margin-top: 14px; }
-  .price-note { margin-top: 10px; padding-block: 11px; }
-  .license-line { margin-top: 10px; }
-}
-/* 1024–1180: перечень в шесть рядов — ряды плотнее (1024×690, iPad landscape в Safari). */
-@media (min-width: 1024px) and (max-width: 1180px) and (max-height: 820px) {
-  .object-list li { padding-block: 3px; }
-  .object-list li::before { top: 10px; }
+  .hero-lead { margin-top: 18px; }
+  .hero-actions { margin-top: 24px; }
+  .price-note { margin-top: 16px; }
 }
 /* 1280×600 (1920 px при масштабе 150% в Windows): ещё плотнее. */
 @media (min-width: 1024px) and (max-height: 640px) {
   .hero { padding-top: 6px; }
   .hero-visual { height: calc(100% - 18px); }
-  .hero .eyebrow { margin-bottom: 8px; }
   .hero h1 { font-size: clamp(36px, 3.1vw, 42px); line-height: 1.06; }
-  .hero-lead { margin-top: 8px; }
-  .object-list li { padding-block: 3px; }
-  .object-list li::before { top: 10px; }
-  .hero-actions { margin-top: 12px; }
-  .price-note { margin-top: 8px; }
+  .hero-lead { margin-top: 14px; }
+  .hero-actions { margin-top: 18px; }
+  .price-note { margin-top: 12px; }
 }
 
 @media (max-width: 1023px) {
   :root { --section-space: 80px; }
   .hero { padding-top: 36px; }
   .hero-card { grid-template-columns: 1fr; gap: 44px; }
-  .hero-copy { padding-bottom: 0; }
+  .hero-card { min-height: 0; }
+  .hero-copy { padding-block: 0; align-self: auto; }
   .hero h1 { max-width: 700px; font-size: clamp(38px, 5.4vw, 48px); }
-  .hero-lead { font-size: 16.5px; }
+  .hero-lead { font-size: 17px; }
   .hero-visual { width: min(100% - 56px, 560px); height: auto; max-height: none; margin: var(--step) 0 0; justify-self: center; align-self: auto; }
   .hero-visual picture { height: auto; min-height: 0; aspect-ratio: 5 / 4; }
   .hero-visual img { object-position: 76% 50%; }
@@ -657,30 +617,21 @@ main:focus { outline: none; }
      до 157 px экрана и закрывала бы начало раздела после перехода по якорю. */
   .no-js .site-header, .legal-page .site-header { position: static; }
   .section-label, .panel-kicker { margin-bottom: 16px; font-size: 11px; letter-spacing: .14em; gap: 12px; }
-  .section-label::before, .panel-kicker::before, .eyebrow::before { flex-basis: 20px; }
-  /* Первый экран: H1, перечень, CTA и поле цены целиком на 375×812 и 360×800 (низ цены ≤ 800),
-     CTA целиком на 375×667. Место берём у H1 и отступов, рубрика — читаемые 11 px в две строки. */
-  .hero { padding-top: 12px; }
+  .section-label::before, .panel-kicker::before { flex-basis: 20px; }
+  /* Первый экран: H1, фраза, CTA и цена целиком на 375×812 и 360×800. */
+  .hero { padding-top: 20px; }
   .hero-card { gap: 36px; }
-  .hero .eyebrow { margin-bottom: 8px; font-size: 11px; letter-spacing: .08em; line-height: 1.35; gap: 10px; text-wrap: balance; }
-  .hero .eyebrow::before { flex-basis: 16px; }
-  .hero h1 { font-size: 28px; line-height: 1.06; }
-  .hero-lead { margin-top: 8px; font-size: 14.5px; line-height: 1.45; }
-  /* Две независимые колонки (multicol): пункты 1–6 и 7–12 в порядке DOM. Строки колонок
-     не выравниваются друг по другу, поэтому линий между пунктами нет — только ромбы:
-     разнобой высот не виден, пустых полос нет. */
-  .object-list { display: block; margin-top: 8px; padding: 4px 11px; columns: 2; column-gap: 16px; border-radius: var(--radius-sm); }
-  .object-list li { padding: 2px 0 2px 11px; break-inside: avoid; font-size: 14px; line-height: 1.25; white-space: normal; }
-  .object-list li:nth-child(n) { margin-right: 0; padding-right: 0; border-top: 0; }
-  .object-list li:nth-child(6) { break-after: column; }
-  .object-list li::before { top: 9px; width: 4px; height: 4px; }
-  .hero-actions { margin-top: 10px; gap: 10px; }
+  .hero h1 { font-size: clamp(27px, 7.4vw, 31px); line-height: 1.08; }
+  .hero-lead { margin-top: 14px; font-size: 16px; line-height: 1.5; }
+  .hero-actions { margin-top: 22px; gap: 10px; }
+  .price-note { width: auto; margin-top: 14px; padding: 9px 14px 9px 9px; gap: 12px; font-size: 14.5px; }
+  .price-note > .ic { width: 36px; height: 44px; padding: 14px 9px 9px; border-radius: 18px 18px 5px 5px; }
+  .object-band { padding-top: 24px; }
+  .object-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px 18px; }
+  .object-list li { font-size: 15px; white-space: normal; }
+  .object-list li::before { top: 8.5px; }
   .hero-actions .btn { flex: 1 1 auto; min-width: 0; min-height: 54px; padding: 5px 5px 5px 22px; justify-content: space-between; }
   .hero-actions .round-link { width: 54px; height: 54px; padding: 15px; }
-  .price-note { margin-top: 8px; padding: 10px 16px 10px 14px; grid-template-columns: 40px minmax(0, 1fr); gap: 14px; align-items: start; font-size: 14.5px; }
-  .price-note > .ic { width: 40px; height: 50px; padding: 16px 10px 10px; border-radius: 20px 20px 5px 5px; }
-  .price-note b { font-size: 22px; }
-  .license-line { margin-top: 14px; border-radius: 16px; font-size: 12px; }
   .hero-visual { width: auto; margin: var(--step) calc(var(--step) * 2) 0; justify-self: stretch; }
   .hero-visual picture { aspect-ratio: 4 / 5; }
   .hero-visual img { object-position: 79% 50%; }
@@ -769,30 +720,20 @@ main:focus { outline: none; }
   .legal-content .legal-notice { padding: 18px; }
 }
 
-/* До 413 px: 13.5 px, чтобы «офисные помещения» и «чердачные помещения» не рвались
-   в узкой колонке — перечень ниже, поле цены входит в первый экран 375×812. */
-@media (max-width: 413px) {
-  .object-list li { font-size: 13.5px; }
-  .object-list li::before { top: 8.5px; }
-}
-/* 360×800 (самый частый Android): H1 в четыре строки вместо шести, вводная фраза в три строки —
-   низ поля цены ≤ 800 px. */
+/* До 374 px (360×800 и уже): заголовок и фраза чуть мельче. */
 @media (max-width: 374px) {
-  .hero h1 { font-size: 26px; }
-  .hero-lead { font-size: 14px; }
+  .hero-lead { font-size: 15px; }
   /* Подсказка «Например: склад 800 м², Москва» целиком (кегль ввода остаётся 16 px). */
   .field input::placeholder, .field textarea::placeholder { font-size: 15px; }
 }
 
 @media (max-width: 359px) {
-  .object-list li { font-size: 13px; }
   /* Подсказка поля «Адрес или площадь» целиком: поле чуть шире внутри, кегль подсказок
      13.5 px (кегль ввода остаётся 16 px — без автоувеличения в iOS). */
   .field input, .field select { padding-inline: 12px; }
   .field input::placeholder, .field textarea::placeholder { font-size: 13.5px; }
   .hero-actions .btn { padding-left: 18px; gap: 10px; font-size: 14px; white-space: nowrap; }
   .hero-actions .btn .ic { width: 40px; height: 40px; padding: 10px; }
-  .license-line { font-size: 11px; letter-spacing: -.005em; }
   .quick-panel h2 { font-size: 24px; }
   .section-heading h2, .request-heading h2, .system-copy > h2, .documents-panel h2, .license-copy h2, .contact-inner h2 { font-size: 29px; }
   .service-card-copy h3 { font-size: 22px; }
@@ -809,7 +750,7 @@ main:focus { outline: none; }
   .step-number { border: 1px solid CanvasText; }
   .service-card.is-open .service-more, .menu-button[aria-expanded="true"] { border: 2px solid Highlight; }
   .object-list li::before, .service-card-detail li::before, .compact-list li::before, .clients-copy li::before, .legal-content li::before { background: CanvasText; }
-  .price-note, .license-line, .license-number, .quick-field, .license-panel, .quick-panel { border: 1px solid CanvasText; }
+  .price-note, .license-number, .quick-field, .license-panel, .quick-panel { border: 1px solid CanvasText; }
 }
 
 @media (prefers-reduced-motion: reduce) {

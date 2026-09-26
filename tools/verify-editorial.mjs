@@ -46,7 +46,7 @@ try {
  for(const width of [320,375,768,1024,1280,1440]){
   await page.setViewportSize({width,height:900});await page.goto(base+'/?qa=1',{waitUntil:'networkidle'});
   await geometry(width+' initial');
-  if(width===1440){const hero=await page.evaluate(()=>({cta:document.querySelector('.hero-actions').getBoundingClientRect().bottom,license:document.querySelector('.license-line').getBoundingClientRect().bottom,h1:parseFloat(getComputedStyle(document.querySelector('h1')).fontSize)}));check(hero.cta<=900&&hero.license<=900&&hero.h1<=68,'1440×900 CTA and license visible',hero);}
+  if(width===1440){const hero=await page.evaluate(()=>({cta:document.querySelector('.hero-actions').getBoundingClientRect().bottom,license:document.querySelector('.proof-item').getBoundingClientRect().bottom,price:document.querySelector('.price-note').getBoundingClientRect().bottom,h1:parseFloat(getComputedStyle(document.querySelector('h1')).fontSize)}));check(hero.cta<=900&&hero.price<=900&&hero.license<=900&&hero.h1<=68,'1440×900 CTA, price and license visible',hero);}
   for(const service of ['disinsection','deratization','acaricidal','disinfection']){
    await page.locator(`[data-service-open="${service}"]`).click();
    const s=await page.evaluate(()=>{const open=document.querySelector('.service-card.is-open'),d=open.querySelector('.service-card-detail'),r=d.getBoundingClientRect();return {count:document.querySelectorAll('.service-card.is-open').length,detailHeight:r.height,detailOverflow:d.scrollHeight>d.clientHeight+1,closed:[...document.querySelectorAll('.service-card:not(.is-open)')].map(c=>({height:c.getBoundingClientRect().height,header:c.querySelector('.service-card-copy').getBoundingClientRect().height}))};});

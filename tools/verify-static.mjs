@@ -55,11 +55,14 @@ for (const name of readdirSync(root).filter((file) => /\.md$/i.test(file))) {
   check(!/example\.ru/i.test(text), `${name}: в корне сайта остался домен-заглушка example.ru`);
 }
 {
-  /* Подзаголовок заказчика: либо цельным абзацем, либо вводная фраза + список .object-list — слова дословно. */
-  const lead = (index.match(/<p class="hero-lead">([\s\S]*?)<\/p>/) || [])[1] || '';
-  const list = (index.match(/<ul class="object-list"[^>]*>([\s\S]*?)<\/ul>/) || [])[1] || '';
-  const items = [...list.matchAll(/<li[^>]*>([\s\S]*?)<\/li>/g)].map((m) => m[1].replace(/<[^>]+>/g, '').trim());
-  const text = (lead.replace(/<[^>]+>/g, '').trim() + (items.length ? ' ' + items.join(', ') + '.' : '')).replace(/\s+/g, ' ');
+  /* Текст заказчика дословно: фраза в hero + подпись полосы «На следующих типах объектов:» + перечень. */
+  const strip = (html) => html.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ').trim();
+  const lead = strip((index.match(/<p class="hero-lead">([\s\S]*?)<\/p>/) || [])[1] || '');
+  const band = (index.match(/<div class="object-band[^"]*">([\s\S]*?)<\/div>/) || [])[1] || '';
+  const intro = strip((band.match(/<p class="section-label"[^>]*>([\s\S]*?)<\/p>/) || [])[1] || '');
+  const items = [...band.matchAll(/<li[^>]*>([\s\S]*?)<\/li>/g)].map((m) => strip(m[1]));
+  const text = [lead, intro.charAt(0).toLowerCase() + intro.slice(1), items.join(', ')].filter(Boolean).join(' ') + (items.length ? '.' : '');
+  check(!/class="eyebrow"|class="license-line"/.test(index), 'Первый экран разгружен: рубрика над H1 и бейдж лицензии убраны (лицензия — в полосе под hero)');
   check(text === "Оказание услуг по дезинсекции, дератизации, дезинфекции, пест-контроля и акарицидной обработке на следующих типах объектов: пищевые производства, пищеблоки, рестораны, кафе, складские помещения, жилые помещения, места общего пользования, офисные помещения, базы отдыха, подвальные и чердачные помещения, территория, периметр зданий и сооружений.", 'Подзаголовок hero не совпадает с текстом заказчика: ' + text.slice(0, 120));
 }
 check(index.includes("зависит от особенностей объекта. Подберём её после бесплатного выезда и обследования.") && index.includes('class="price-note"'), 'Нет блока о ценообразовании');
