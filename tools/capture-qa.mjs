@@ -1,19 +1,16 @@
-import { createRequire } from 'node:module';
 import { mkdirSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { launch } from './browser.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const root = resolve(here, '..');
 const out = resolve(root, '_dev/qa-v5', process.argv[3] || 'after');
-const require = createRequire('/Users/pavelp/Documents/Claude/superselezen-visa/');
-const { chromium } = require('playwright-core');
-const chrome = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
-const base = process.argv[2] || 'http://127.0.0.1:8745';
+const base = process.argv[2] || 'http://127.0.0.1:8747';
 
 mkdirSync(out, { recursive: true });
 
-const browser = await chromium.launch({ executablePath: chrome, headless: true });
+const browser = await launch();
 const widths = [320, 375, 768, 1024, 1280, 1440];
 
 async function open(width, path = '/?qa=1') {

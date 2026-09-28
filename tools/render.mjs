@@ -1,13 +1,11 @@
-/* Снимок страницы в PNG через установленный Chrome (Playwright из соседнего проекта).
+/* Снимок страницы в PNG через Playwright (браузер подбирает tools/browser.mjs).
    node tools/render.mjs <url> <out.png> [ширина=1440] [высота=900] [full=1] [scale=1] [transparent]
    transparent — без фона по умолчанию (для страниц с прозрачным body, например логотипа).
    Добавляет ?qa=1, чтобы появления (.reveal) не прятали контент на снимке. */
-import { createRequire } from 'node:module';
-const require = createRequire('/Users/pavelp/Documents/Claude/superselezen-visa/');
-const { chromium } = require('playwright-core');
+import { launch } from './browser.mjs';
 const [, , url, out, w = '1440', h = '900', full = '1', scale = '1', bg = ''] = process.argv;
 if (!url || !out) { console.error('usage: node tools/render.mjs <url> <out.png> [w] [h] [full] [scale]'); process.exit(2); }
-const browser = await chromium.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: true });
+const browser = await launch();
 const page = await browser.newPage({ viewport: { width: +w, height: +h }, deviceScaleFactor: +scale });
 const errors = [];
 page.on('pageerror', (e) => errors.push(e.message));

@@ -1,16 +1,14 @@
-import { createRequire } from 'node:module';
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { launch } from './browser.mjs';
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
-const require=createRequire('/Users/pavelp/Documents/Claude/superselezen-visa/');
-const {chromium}=require('playwright-core');
-const base=process.argv[2]||'http://127.0.0.1:8745';
+const base=process.argv[2]||'http://127.0.0.1:8747';
 const out=resolve(root,'_dev/qa-v5');
 mkdirSync(out,{recursive:true});
 const checks=[], failures=[], resources=[], errors=[], metrics=[];
 function check(ok,label,detail) { checks.push({label,passed:!!ok,detail}); if(!ok) failures.push({label,detail}); }
-const browser=await chromium.launch({executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',headless:true});
+const browser=await launch();
 try {
  const ctx=await browser.newContext({reducedMotion:'reduce'});
  const page=await ctx.newPage();

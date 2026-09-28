@@ -1,12 +1,12 @@
 #!/bin/bash
-# Скриншоты сайта headless-Хромом. Сервер должен быть запущен: python3 devserver.py 8744
+# Скриншоты сайта headless-Хромом. Сервер должен быть запущен: python3 devserver.py 8747
 # Использование: bash tools/shots.sh [desktop|tablet|mobile|all]
 set -e
-CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+CHROME="${CHROME_PATH:-/Applications/Google Chrome.app/Contents/MacOS/Google Chrome}"
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 OUT="$ROOT/tools/shots"
 # ?qa=1 отключает анимации появления — иначе кадр может поймать полупрозрачные блоки.
-URL="${URL:-http://127.0.0.1:8744/?qa=1}"
+URL="${URL:-http://127.0.0.1:8747/?qa=1}"
 mkdir -p "$OUT"
 
 shot () {

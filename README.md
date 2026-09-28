@@ -88,9 +88,11 @@ node tools/verify-editorial.mjs http://127.0.0.1:8747  # вёрстка на р�
 node tools/render.mjs http://127.0.0.1:8747/ out.png 1440 900 1 1
 ```
 
-> Браузерные скрипты сейчас настроены на машину автора: используют установленный Google Chrome
-> (путь macOS) и `playwright-core` из соседнего проекта. Для запуска в другом окружении поправьте
-> `executablePath` и путь в `createRequire` в начале скрипта. Результаты пишутся в `_dev/qa-v5/`.
+Playwright и браузер подбирает `tools/browser.mjs`: Playwright берётся из `PLAYWRIGHT_MODULE`,
+`node_modules` репозитория или глобальной установки npm; браузер — из `CHROME_PATH`, установленного
+Google Chrome на macOS или Chromium самого Playwright. Если Playwright нигде нет:
+`npm i -g playwright-core` (плюс `npx playwright install chromium`, если нет Chrome).
+Отчёты и снимки пишутся в `_dev/qa-v5/`.
 
 ## Публикация
 

@@ -1,10 +1,8 @@
-import { createRequire } from 'node:module';
 import { resolve,dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { launch } from './browser.mjs';
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
-const require=createRequire('/Users/pavelp/Documents/Claude/superselezen-visa/');
-const {chromium}=require('playwright-core');
-const browser=await chromium.launch({executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',headless:true});
+const browser=await launch();
 try {
  const page=await browser.newPage({viewport:{width:1440,height:1000}});
  for(const [width,section] of [[1440,'top'],[375,'top'],[1440,'equipment'],[1440,'preparations'],[1440,'request-empty'],[320,'service-acaricidal']]){

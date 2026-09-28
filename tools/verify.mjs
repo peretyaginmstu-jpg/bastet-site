@@ -1,26 +1,23 @@
-/* Браузерные проверки. Playwright берём из соседнего проекта — ставить нечего.
-   Запуск: node tools/verify.mjs [базовый-url]   (нужен запущенный devserver.py 8744)
+/* Браузерные проверки. Playwright и браузер подбирает tools/browser.mjs.
+   Запуск: node tools/verify.mjs [базовый-url]   (нужен запущенный devserver.py 8747)
 
    Статический tools/verify-static.mjs проверяет исходники регулярками; этот файл
    проверяет то, что регулярками не проверить: реальную геометрию, поведение без JS,
    собранные ссылки и живой сценарий подбора. */
-import { createRequire } from 'node:module';
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
+import { launch } from './browser.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
-const require = createRequire('/Users/pavelp/Documents/Claude/superselezen-visa/');
-const { chromium } = require('playwright-core');
 
-const BASE = process.argv[2] || 'http://127.0.0.1:8745';
-const CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+const BASE = process.argv[2] || 'http://127.0.0.1:8747';
 
 const problems = [];
 const fail = (m) => problems.push(m);
 const ok = (m) => console.log('  ✓ ' + m);
 
-const browser = await chromium.launch({ executablePath: CHROME, headless: true });
+const browser = await launch();
 const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
 
 const consoleErrors = [];
@@ -196,7 +193,8 @@ await page.click('.service-card[data-service="acaricidal"] .service-more');
        и выталкивает кнопку за край, где её срезает overflow: hidden. --- */
 for (const w of [1000, 1160, 1440]) {
   await page.setViewportSize({ width: w, height: 900 });
-  await page.waitForTimeout(220);
+  /* поворот кнопки длится --control (320 мс): посреди него повёрнутый квадрат шире круга */
+  await page.waitForTimeout(450);
   const clipped = await page.evaluate(() => [...document.querySelectorAll('.service-card')].map((c) => {
     const card = c.getBoundingClientRect();
     const btn = c.querySelector('.service-more').getBoundingClientRect();
@@ -314,7 +312,12 @@ for (const w of [375, 1440]) {
   await page.setViewportSize({ width: w, height: 900 });
   for (const hash of ['top', 'services', 'equipment', 'process', 'documents', 'request', 'contacts']) {
     await page.goto(`${BASE}/#${hash}`, { waitUntil: 'load' });
-    await page.waitForTimeout(120);
+    /* смена hash на той же странице прокручивает плавно — ждём, пока прокрутка остановится */
+    await page.waitForFunction(() => new Promise((done) => {
+      let last = -1;
+      const tick = () => (scrollY === last ? done(true) : ((last = scrollY), setTimeout(tick, 80)));
+      tick();
+    }));
     const anchor = await page.evaluate((id) => {
       const target = document.getElementById(id);
       const header = document.querySelector('.site-header');
