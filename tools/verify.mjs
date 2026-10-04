@@ -263,7 +263,7 @@ else ok('без согласия на обработку ПДн отправка
 await page.check('#fConsent');
 await page.click('#btnMail');
 opened = await page.evaluate(() => window.__mail);
-if (!opened || !opened.startsWith('mailto:aziev-robert@mail.ru?subject=')) fail('некорректная ссылка письма: ' + opened);
+if (!opened || !opened.startsWith('mailto:info@bastet-dez.ru?subject=')) fail('некорректная ссылка письма: ' + opened);
 else {
   const decoded = decodeURIComponent(opened.split('body=')[1]);
   if (!decoded.includes('Складские помещения') || !decoded.includes('+7 (918) 826-66-17')) fail('в тексте заявки нет объекта или телефона');
@@ -277,7 +277,7 @@ const links = await page.evaluate(() => ({
 }));
 if (links.tel.some((h) => h !== 'tel:+79188266617')) fail('нестандартный tel:: ' + links.tel.join(', '));
 else ok('все tel: в международном формате');
-if (links.mail.some((h) => !h.startsWith('mailto:aziev-robert@mail.ru'))) fail('неверный mailto: ' + links.mail.join(', '));
+if (links.mail.some((h) => !h.startsWith('mailto:info@bastet-dez.ru'))) fail('неверный mailto: ' + links.mail.join(', '));
 else ok('mailto ведёт на почту заказчика');
 
 /* --- 8. Страницу нельзя увести вбок.

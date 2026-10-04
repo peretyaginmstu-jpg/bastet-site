@@ -94,7 +94,7 @@ try {
  await page.locator('#fConsent').check();for(const id of ['btnMail','btnCopy'])await page.locator('#'+id).click();
  const sent=await page.evaluate(()=>({mail:window.__mail,copy:window.__copied}));
  const mail=new URL(sent.mail);for(const [name,text] of [['mail',mail.searchParams.get('body')],['copy',sent.copy]])check(text.includes('Тест QA')&&text.includes('Складские помещения')&&text.includes('800 м²')&&text.includes('Проверка без отправки'),name+' request text');
- check(mail.pathname==='aziev-robert@mail.ru'&&!(await page.locator('#btnWa').count())&&!(await page.locator('a[href*="wa.me"]').count()),'outbound destinations: mail only, no WhatsApp');
+ check(mail.pathname==='info@bastet-dez.ru'&&!(await page.locator('#btnWa').count())&&!(await page.locator('a[href*="wa.me"]').count()),'outbound destinations: mail only, no WhatsApp');
  await page.fill('#fPhone','123');await page.evaluate(()=>{window.__mail=null;});await page.locator('#btnMail').click();check(await page.evaluate(()=>!window.__mail&&document.activeElement.id==='fPhone'),'invalid phone blocked with focus');
  await page.fill('#fPhone','89188266617');await page.evaluate(()=>{Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:async()=>{throw Error('denied');}}});document.execCommand=()=>true;});await page.locator('#btnCopy').click();await page.waitForTimeout(50);check((await page.locator('#formStatus').innerText()).includes('скопирован'),'copy denied fallback');
  const cdp=await ctx.newCDPSession(page);const ax=await cdp.send('Accessibility.getFullAXTree');

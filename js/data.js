@@ -6,7 +6,7 @@
 const CONTACTS = {
   phoneHuman: '8 (918) 826-66-17',
   phoneLink: '+79188266617',
-  email: 'aziev-robert@mail.ru',
+  email: 'info@bastet-dez.ru',
   legalName: 'Индивидуальный предприниматель Азиев Роберт Русланович',
   shortName: 'ИП Азиев Р. Р.',
   brand: 'Бастет',
