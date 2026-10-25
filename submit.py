@@ -257,11 +257,11 @@ class ApiHandler(BaseHTTPRequestHandler):
         try:
             send_email(data)
         except Exception as exc:
-            log_line('[error] {:%Y-%m-%d %H:%M:%S} {} send failed: {}'.format(time.localtime(), client, exc))
+            log_line('[error] {} {} send failed: {}'.format(time.strftime('%Y-%m-%d %H:%M:%S'), client, exc))
             self._json(500, {'ok': False, 'error': 'send_failed'})
             return
 
-        log_line('{:%Y-%m-%d %H:%M:%S}\t{}\t{}'.format(time.localtime(), client, data['phone']))
+        log_line('{}\t{}\t{}'.format(time.strftime('%Y-%m-%d %H:%M:%S'), client, data['phone']))
         self._json(200, {'ok': True})
 
 

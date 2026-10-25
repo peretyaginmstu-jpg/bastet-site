@@ -12,10 +12,10 @@ Type=simple
 # The user must be able to read /opt/bastet (submit.py and submit.env).
 User=www-data
 Group=www-data
-WorkingDirectory=/opt/bastet
-EnvironmentFile=/opt/bastet/submit.env
+WorkingDirectory=/var/www/bastet-back
+EnvironmentFile=/var/www/bastet-back/submit.env
 # If python3 is elsewhere, adjust the path (check: which python3).
-ExecStart=/usr/bin/python3 /opt/bastet/submit.py
+ExecStart=/usr/bin/python3 /var/www/bastet-back/submit.py
 Restart=on-failure
 RestartSec=3
 
