@@ -701,10 +701,10 @@
     return true;
   }
 
-  function requestText() {
+  function readForm() {
     var selection = currentPick();
     var selectedOption = objectSelect && objectSelect.selectedIndex >= 0 ? objectSelect.options[objectSelect.selectedIndex] : null;
-    return S.buildRequestText({
+    return {
       name: $('#fName').value.trim(),
       phone: phone.value.trim(),
       objectLabel: objectSelect.value && selectedOption ? selectedOption.textContent.trim() : '',
@@ -715,12 +715,15 @@
       }),
       serviceNames: selection.services.map(function (service) { return service.name; }),
       comment: $('#fComment').value.trim(),
-    });
+    };
   }
 
-  var mailButton = $('#btnMail');
-  if (mailButton) mailButton.addEventListener('click', function () {
-    if (!validateForm()) return;
+  function requestText() {
+    return S.buildRequestText(readForm());
+  }
+
+  /* Отправка письмом: запасной путь, если сервис заявок недоступен. */
+  function openMail() {
     var body = requestText();
     var url = 'mailto:' + C.email + '?subject=' + encodeURIComponent('Заявка с сайта «Бастет» — санитарная обработка') + '&body=' + encodeURIComponent(body);
     if (url.length > 1800) {
@@ -729,8 +732,76 @@
     }
     window.location.href = url;
     setStatus('Открываем почтовый клиент. Если он не настроен, используйте «Копировать».', true);
+  }
+
+  var mailButton = $('#btnMail');
+  if (mailButton) mailButton.addEventListener('click', function () {
+    if (!validateForm()) return;
+    openMail();
   });
 
+  /* Реальная отправка заявки на свой endpoint /api/request (см. submit.py). Если сервис недоступен, возвращаемся к почтовому клиенту. */
+  function postRequest(payload) {
+    if (!window.fetch) return Promise.resolve(null);
+    return window.fetch('/api/request', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    }).then(function (response) {
+      return response.json().then(function (data) {
+        return { http: response.status, ok: response.ok, data: data };
+      }, function () {
+        return { http: response.status, ok: response.ok, data: {} };
+      });
+    }).then(function (result) {
+      if (result.http === 404 || result.http === 405) return null;
+      if (result.ok && result.data && result.data.ok) return { ok: true, error: '' };
+      var code = (result.data && result.data.error) || 'send_failed';
+      return { ok: false, error: code };
+    }, function () {
+      return null;
+    });
+  }
+
+  var REQUEST_ERRORS = {
+    rate_limit: 'Слишком много заявок. Попробуйте позже.',
+    too_large: 'Заявка слишком большая.',
+    send_failed: 'Не удалось отправить заявку.',
+  };
+  function requestErrorMessage(code) {
+    return REQUEST_ERRORS[code] || 'Не удалось отправить заявку.';
+  }
+
+  var submitButton = $('#btnSubmit');
+  if (submitButton) submitButton.addEventListener('click', function () {
+    if (!validateForm()) return;
+    var form = readForm();
+    var payload = {
+      name: form.name,
+      phone: form.phone,
+      objectLabel: form.objectLabel,
+      place: form.place,
+      issueLabels: form.issueLabels,
+      serviceNames: form.serviceNames,
+      comment: form.comment,
+      consent: !!(consentBox && consentBox.checked),
+      website: '',
+    };
+    submitButton.disabled = true;
+    setStatus('Отправляем…', false);
+    postRequest(payload).then(function (result) {
+      submitButton.disabled = false;
+      if (result === null) {
+        openMail();
+        return;
+      }
+      if (result.ok) {
+        setStatus('Заявка отправлена. Свяжемся с вами в рабочее время.', true);
+      } else {
+        setStatus(requestErrorMessage(result.error) + ' Можно «Отправить письмом» или позвонить.', false);
+      }
+    });
+  });
   function fallbackCopy(text) {
     var textarea = document.createElement('textarea');
     textarea.value = text;

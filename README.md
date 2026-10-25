@@ -3,14 +3,15 @@
 Одностраничный сайт санитарной службы «Бастет» (ИП Азиев Р. Р., Москва): дезинсекция, дератизация,
 акарицидная обработка и дезинфекция.
 
-**Сайт:** https://peretyaginmstu-jpg.github.io/bastet-site/
-**Будущий домен:** `bastet-dez.ru` (уже указан в canonical, OG-разметке, `sitemap.xml` и `robots.txt`)
+**Сайт:** https://bastet-dez.ru/
+**Зеркало для разработки:** https://peretyaginmstu-jpg.github.io/bastet-site/
 
 ## Коротко о проекте
 
 - Статический сайт: семантический HTML, CSS и vanilla JS. Без сборщика, фреймворков и зависимостей.
-- Нет бэкенда: сайт не отправляет и не хранит заявки. Форма собирает текст заявки и открывает
-  почтовое приложение посетителя (`mailto:`) или копирует текст в буфер обмена.
+- Форма заявки: основная отправка — POST на свой сервис `submit.py` (nginx-прокси `/api/request`),
+  который шлёт письмо через Яндекс SMTP на `info@bastet-dez.ru`. Если сервис недоступен, форма
+  открывает почтовое приложение посетителя (`mailto:`) или копирует текст в буфер обмена.
 - Контакты: телефон и электронная почта.
 - Шрифты подключены локально: Prata 400 для заголовков (OFL) и Inter variable 400–700.
 - Изображения в трёх форматах (AVIF, WebP, JPEG) и нескольких размерах для `srcset`.
@@ -36,6 +37,9 @@ index.html          главная страница
 privacy.html        политика обработки персональных данных
 robots.txt          правила для поисковых роботов
 sitemap.xml         карта сайта
+submit.py           сервис приёма заявок (Python 3, без зависимостей; на сайт не публикуется)
+submit.env.example  шаблон конфигурации сервиса (секреты — в submit.env, он в .gitignore)
+deploy/             systemd-юнит и фрагмент nginx для сервиса заявок (на сайт не публикуется)
 css/
   styles.css        стили сайта
   fonts.css         подключение локальных шрифтов
@@ -141,10 +145,32 @@ python3 brand/build-logo.py
 
 ## Перед запуском на боевом домене
 
-- [ ] Зарегистрировать домен `bastet-dez.ru` и подключить его в GitHub Pages.
+- [x] Домен `bastet-dez.ru` зарегистрирован и обслуживает сайт (VPS, HTTPS, Яндекс-почта).
 - [ ] Утвердить у заказчика текст политики ПДн (сейчас он типовой). После утверждения удалить пометку
       `[ПРОВЕРИТЬ]` из `privacy.html` и проверки этого маркера в `tools/verify-static.mjs` и `tools/verify.mjs`.
 - [ ] Добавить скан лицензии, когда он будет (заглушки на сайте нет намеренно).
+
+## Сервис приёма заявок (VPS)
+
+Форма шлёт `POST /api/request`; nginx проксирует на локальный `submit.py`, который отправляет
+письмо через Яндекс SMTP на `info@bastet-dez.ru`. Если сервис не развёрнут, форма открывает
+почтовый клиент посетителя (`mailto:`) — сайт работает и без него.
+
+Развёртывание:
+
+1. `sudo mkdir -p /opt/bastet && sudo cp submit.py /opt/bastet/`
+2. `sudo cp submit.env.example /opt/bastet/submit.env` — впишите `BASTET_SMTP_PASSWORD`
+   (пароль приложения: Яндекс 360 → Безопасность → Пароли приложений → Почта/SMTP;
+   обычный пароль ящика для SMTP не подходит), затем `sudo chmod 600 /opt/bastet/submit.env`.
+3. `sudo cp deploy/bastet-api.service /etc/systemd/system/`
+   `sudo systemctl daemon-reload && sudo systemctl enable --now bastet-api`
+   Проверка: `curl http://127.0.0.1:8751/healthz` → `{"ok": true}`
+4. Вставьте содержимое `deploy/nginx-api.conf` внутрь `server { ... }` конфига сайта,
+   затем `sudo nginx -t && sudo systemctl reload nginx`.
+5. Сквозная проверка: `curl -X POST https://bastet-dez.ru/api/request -H 'Content-Type: application/json' -d '{"phone":"79188266617","consent":true,"text":"Тест"}'` → `{"ok": true}`
+   и письмо на почту.
+
+`submit.env` в git не попадает (.gitignore).
 
 ## Лицензии сторонних ресурсов
 

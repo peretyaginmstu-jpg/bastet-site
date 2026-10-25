@@ -1,0 +1,23 @@
+# systemd unit for the Bastet request form service.
+# Install:
+#   sudo cp deploy/bastet-api.service /etc/systemd/system/
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable --now bastet-api
+[Unit]
+Description=Bastet site request form API
+After=network.target
+
+[Service]
+Type=simple
+# The user must be able to read /opt/bastet (submit.py and submit.env).
+User=www-data
+Group=www-data
+WorkingDirectory=/opt/bastet
+EnvironmentFile=/opt/bastet/submit.env
+# If python3 is elsewhere, adjust the path (check: which python3).
+ExecStart=/usr/bin/python3 /opt/bastet/submit.py
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
